@@ -16,8 +16,8 @@
 | 平台 | 阅读入口 | 范围 |
 | --- | --- | --- |
 | Windows 10 / 11 | [Windows 使用指南](guides/windows.md) | 安装、设置、输入模式、词库导入导出、语音和排障；对应 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 发布的版本 |
-| macOS 12+ | [macOS 使用指南](guides/macos.md) · [语音输入](guides/macos-voice.md) | 安装、原生设置、快捷键、数据与卸载；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布 |
-| Linux / IBus | [Linux 使用指南](guides/linux.md) | 安装启用、设置、桌面工具、语音命令与排障；已发布安装包来自已归档的 msime-linux，msime 中同时提供 IBus 与 Fcitx5 入口的新宿主仍在开发，尚未发布 |
+| macOS 13+ | [macOS 使用指南](guides/macos.md) · [语音输入](guides/macos-voice.md) | 安装、原生设置、快捷键、数据与卸载；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布 |
+| Linux / Fcitx5 / IBus | [Linux 使用指南](guides/linux.md) | 安装与首次配置、设置、桌面工具、语音输入与排障；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布，同一个安装包提供 Fcitx5 与 IBus 两个入口 |
 | iOS | [iOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/ios/README.md) · [下载页](https://msime.app/download/) | 键盘扩展，通过 TestFlight 公开测试分发，尚未上架 App Store |
 | Android | [Android 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/android/README.md) | 开发中，尚未发布安装包 |
 | HarmonyOS | [HarmonyOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/harmony/README.md) | 开发中，尚未发布安装包 |
