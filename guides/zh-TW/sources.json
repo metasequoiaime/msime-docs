@@ -8,17 +8,17 @@
     },
     "macos.md": {
       "source": "guides/macos.md",
-      "sourceSha256": "755ae7bd2fda1e2909e46b8a28160371d7311002e0be031cf77f610830fdc734",
+      "sourceSha256": "16582e28f1553ecafd84af3828121285224dc6cee0ccc00e31e68f7dfc014bda",
       "translation": "guides/zh-TW/macos.md"
     },
     "macos-voice.md": {
       "source": "guides/macos-voice.md",
-      "sourceSha256": "4a8ecb72e2cec73517b5e52734cd6b71abe61b73ed3f3a8bbd094dc2ce7c5bac",
+      "sourceSha256": "6870cb080749f2f51c1e350c706ae401d95d70b4da18329f9e54656857314e9e",
       "translation": "guides/zh-TW/macos-voice.md"
     },
     "linux.md": {
       "source": "guides/linux.md",
-      "sourceSha256": "67a364cc0730467b9d779c34d172b9075826aa4712767f13e8fd56971c0c6af1",
+      "sourceSha256": "3f828209ea1cc7dbfb470e9ddcc4f747f574cd63ae503e3f9b219e5f81373ad3",
       "translation": "guides/zh-TW/linux.md"
     },
     "faq.md": {
