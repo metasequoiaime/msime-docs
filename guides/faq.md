@@ -1,6 +1,6 @@
 # 常见问题 Q&A
 
-从实际反馈中整理的排查办法。先找到与你相同的现象，再按步骤检查；这里以 Windows 为主，其他平台请查阅对应指南。
+从实际反馈中整理的排查办法。先找到与你相同的现象，再按步骤检查。平台与下载的问题适用于所有平台，其余排查以 Windows 为主，其他平台请查阅对应指南。
 
 ## 字体与显示
 
@@ -55,6 +55,50 @@
 来源：[已关闭的 Windows #15](https://github.com/metasequoiaime/msime-windows/issues/15)、[外观设置指南](https://msime.app/docs/?platform=windows#外观)。
 
 ## 安装与启动
+
+### 水杉输入法支持哪些系统，去哪里下载？
+
+所有安装入口都在[官网下载页](https://msime.app/download/)，下载后请按页面说明核对 SHA256。各平台目前的状态：
+
+| 平台 | 状态与获取方式 |
+| --- | --- |
+| Windows 10 / 11 | 正式版是 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 发布的「Metasequoia IME 水杉输入法」；另有一个新版预览，区别见下文 |
+| macOS 13+ | 正式发布，下载 DMG 安装，见 [macOS 指南](https://msime.app/docs/?platform=macos) |
+| Linux | 正式发布，提供 Ubuntu PPA、Fedora COPR、Debian、openSUSE、Arch、NixOS 等安装方式，同一个安装包提供 Fcitx5 和 IBus 两个入口，见 [Linux 指南](https://msime.app/docs/?platform=linux) |
+| Android 9+ | 测试版，从[蒲公英下载页](https://www.pgyer.com/msime)下载 APK 安装，尚未上架应用商店 |
+| iOS | 测试版，通过 [TestFlight 公开测试](https://testflight.apple.com/join/bUzPvyqt)安装，尚未上架 App Store |
+| HarmonyOS | 开发中，尚未发布安装包 |
+
+Android 安装时系统可能提示“未经检测”或“存在风险”，这是对商店外应用的通用提示；只从上面的蒲公英链接下载，不要安装来路不明的 APK。装好后打开水杉输入法，按引导到系统设置中启用并切换为当前输入法。新版本下载后覆盖安装即可，词库和设置不会丢失。
+
+iOS 装好后，到“设置 → 通用 → 键盘 → 键盘 → 添加新键盘”中启用“水杉输入法”。TestFlight 的每个构建有效期为 90 天，到期前在 TestFlight 中更新即可，无需重新加入。
+
+依据：官网下载页与各平台 Release（2026-10-11：Windows 正式版 v0.9.5，macOS v0.52.0，Linux v0.11.0，Android v0.3.1，iOS v0.51.5）。
+
+### 有鸿蒙（HarmonyOS）版吗？
+
+正在开发，还没有发布安装包，也没有上架应用市场。源码在 msime 仓库的 [platforms/harmony](https://github.com/metasequoiaime/msime/tree/develop/platforms/harmony) 目录，开发中的构建不保证稳定。
+
+鸿蒙 NEXT（HarmonyOS 5 及以上）不能安装 Android 的 APK，所以 Android 测试版也装不上。发布安装包后，[官网下载页](https://msime.app/download/)会给出入口。
+
+### iOS 版为什么不在 App Store？
+
+iOS 词库中包含 GPL-3.0 授权的第三方数据，与 App Store 的条款存在冲突，需要先解决授权问题，所以是否上架尚未决定，目前只通过 TestFlight 公开测试分发。
+
+TestFlight 链接提示“不接受新测试员”时，请稍后再试，或到 [Telegram 群](https://t.me/msimegroup)确认当前开放状态。
+
+### Windows 上的「Metasequoia IME 水杉输入法」和「水杉输入法」有什么区别？
+
+两者是不同的产品，数据各自独立：
+
+- **Metasequoia IME 水杉输入法**是现在的 Windows 正式版，由 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 构建、签名和发布，版本号目前是 v0.9.x。[Windows 指南](https://msime.app/docs/?platform=windows)和本页的 Windows 排查都针对它。
+- **水杉输入法**是 [msime](https://github.com/metasequoiaime/msime/releases) 仓库里迁移出来的新实现，以预发布（windows-v0.2.x）提供。除完整版外，还有水杉拼音、水杉五笔、水杉日语、水杉越南语和水杉藏文几个可以单独安装的版本。它的安装包尚未启用代码签名，安装时 Windows 可能提示发布者未知。
+
+日常使用请装正式版。从 windows-v0.2.1 起，新版与正式版使用各自的系统注册信息和数据目录，可以同时安装；更早的 windows-v0.1.0、v0.2.0 完整版沿用正式版的注册信息，装上会覆盖正式版，卸载时也会一并删掉它，不要再安装这两个版本。
+
+反馈问题时请写清用的是哪一个、版本号多少：正式版到 msime-windows 反馈，新版到 msime 反馈。
+
+依据：msime 仓库的 README 与 [platforms/windows/README.md](https://github.com/metasequoiaime/msime/blob/develop/platforms/windows/README.md)，以及两个仓库的 Release（2026-10-11）。
 
 ### 安装后切换不了输入法，Server 反复退出，或设置窗口一闪即关？
 
@@ -213,8 +257,8 @@ mail	example@example.com	10
 
 准备输入法版本、操作系统版本、输入方案、复现步骤、预期结果和实际结果，附能说明现象的截图。应用兼容问题请增加应用名称、版本、权限状态；显示问题增加字体、缩放比例和渲染方式。
 
-先搜索相同问题，再提交 Bug：Windows 在 [msime-windows Issues](https://github.com/metasequoiaime/msime-windows/issues)，macOS、iOS 和 Linux 在 [msime Issues](https://github.com/metasequoiaime/msime/issues)。没有 GitHub 账号时，可用[官网反馈页](https://msime.app/feedback/)选择平台反馈问题或提出建议。macOS 和 Linux 请分别查看[macOS 指南](https://msime.app/docs/?platform=macos)、[Linux 指南](https://msime.app/docs/?platform=linux)。
+先搜索相同问题，再提交 Bug：Windows 正式版在 [msime-windows Issues](https://github.com/metasequoiaime/msime-windows/issues)，macOS、Linux、Android、iOS 和新版 Windows（水杉输入法，windows-v0.2.x）在 [msime Issues](https://github.com/metasequoiaime/msime/issues)。没有 GitHub 账号时，可用[官网反馈页](https://msime.app/feedback/)选择平台反馈问题或提出建议，也可以到 QQ 群 829919142 或 [Telegram 群](https://t.me/msimegroup)交流。在 QQ 群里 @ 机器人可以直接问使用问题，它按本站文档回答，答不上时会请管理员来看。macOS 和 Linux 请分别查看[macOS 指南](https://msime.app/docs/?platform=macos)、[Linux 指南](https://msime.app/docs/?platform=linux)。
 
 公开前遮挡截图中的个人内容、日志里的凭据，不要直接附完整用户词库或配置文件。安全漏洞请按[安全策略](https://github.com/metasequoiaime/.github/blob/main/SECURITY.md)私下报告。
 
-本页于 2026-09-08 核对 Windows 已关闭 Issue、维护者回复及现行指南；2026-10-01 按 Windows v0.9.3 复查设置项与安装程序，并更新已在 v0.6.7 修复的工具栏图标问题 #232。历史版本号只说明对应反馈的范围，不代表当前最新版；是否进入你使用的安装包，以 Release 为准。
+本页于 2026-09-08 核对 Windows 已关闭 Issue、维护者回复及现行指南；2026-10-01 按 Windows v0.9.3 复查设置项与安装程序，并更新已在 v0.6.7 修复的工具栏图标问题 #232；2026-10-11 按各平台 Release 与官网下载页补充平台与下载相关问答。历史版本号只说明对应反馈的范围，不代表当前最新版；是否进入你使用的安装包，以 Release 为准。
