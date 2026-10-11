@@ -18,12 +18,12 @@
     },
     "linux.md": {
       "source": "guides/linux.md",
-      "sourceSha256": "3f828209ea1cc7dbfb470e9ddcc4f747f574cd63ae503e3f9b219e5f81373ad3",
+      "sourceSha256": "b5bc8c3e719f84aad5625ccd539e16ec59a6303b6bc14508b91fdd83be553205",
       "translation": "guides/zh-TW/linux.md"
     },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "2dd454d8a749a5c7c7230f29159109b6daf280176305a51dbddd50c8c6a56238",
+      "sourceSha256": "7171a22850438fd2eaeea4c5dd68eaf7e3ecb6d392395070f13d6c9eeefcc074",
       "translation": "guides/zh-TW/faq.md"
     }
   },

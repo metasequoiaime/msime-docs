@@ -1,22 +1,37 @@
 # Linux 使用指南
 
-水杉 Linux 版的同一个安装包同时提供 Fcitx5 插件和 IBus 引擎，两者共用同一套引擎与设置，支持全拼、双拼、五笔、日语、韩语、粤拼、注音、越南文和藏文等方案，并带有设置窗口、手写、屏幕键盘、剪贴板历史和语音输入。本文按 [msime](https://github.com/metasequoiaime/msime) 主仓发布的 [linux-v0.10.0](https://github.com/metasequoiaime/msime/releases/tag/linux-v0.10.0) 整理；其他版本可能存在功能差异，请同时查看对应 Release。
+水杉 Linux 版的同一个安装包同时提供 Fcitx5 插件和 IBus 引擎，两者共用同一套引擎与设置，支持全拼、双拼、五笔、日语、韩语、粤拼、注音、越南文和藏文等方案，并带有设置窗口、手写、屏幕键盘、剪贴板历史和语音输入。本文按 [msime](https://github.com/metasequoiaime/msime) 主仓发布的 [linux-v0.11.0](https://github.com/metasequoiaime/msime/releases/tag/linux-v0.11.0) 整理；其他版本可能存在功能差异，请同时查看对应 Release。
 
 已归档的 [msime-linux](https://github.com/metasequoiaime/msime-linux) 仓库（v0.8.2 及更早，仅 IBus）不再更新，它的包名、设置程序和配置文件位置都与本文不同，本文不适用于它。
 
 ## 下载与启用
 
-在 [msime Releases](https://github.com/metasequoiaime/msime/releases) 中找标签以 `linux-v` 开头的版本。目前只提供 x86_64（64 位 Intel/AMD）：`msime-linux_0.10.0_amd64.deb` 用于 Debian 系，`msime-linux-0.10.0-1.x86_64.rpm` 用于 Fedora 等 DNF 系统，`msime-linux-0.10.0-linux-x86_64.tar.gz` 是给不经 apt 安装的 Debian 系系统用的同内容归档。`.deb` 在 Debian 12 环境构建，`.rpm` 面向 Fedora 44；两种包都依赖 IBus 与 Fcitx5，能否安装以包管理器的依赖检查为准。下载时一并下载 `SHA256SUMS` 核对校验值：
+在 [msime Releases](https://github.com/metasequoiaime/msime/releases) 中找标签以 `linux-v` 开头的版本。从 linux-v0.11.0 起同时提供 x86_64（64 位 Intel/AMD）和 aarch64（ARM64）两种架构：`msime-linux_0.11.0_amd64.deb`、`msime-linux_0.11.0_arm64.deb` 用于 Debian 系，`msime-linux-0.11.0-1.x86_64.rpm`、`msime-linux-0.11.0-1.aarch64.rpm` 用于 Fedora 等 DNF 系统，`msime-linux-0.11.0-linux-x86_64.tar.gz`、`msime-linux-0.11.0-linux-aarch64.tar.gz` 是给不经 apt 安装的 Debian 系系统用的同内容归档。下文命令以 x86_64 为例，ARM64 设备换成对应架构的文件名。下载时一并下载 `SHA256SUMS` 核对校验值：
 
 ```sh
 sha256sum -c SHA256SUMS --ignore-missing
-sudo apt install ./msime-linux_0.10.0_amd64.deb
-sudo dnf install ./msime-linux-0.10.0-1.x86_64.rpm
+sudo apt install ./msime-linux_0.11.0_amd64.deb
+sudo dnf install ./msime-linux-0.11.0-1.x86_64.rpm
 ```
 
-第二、三条按发行版二选一。归档的解压方法、需要自备的依赖和手动删除方式见 [Linux 宿主说明](https://github.com/metasequoiaime/msime/blob/linux-v0.10.0/platforms/linux/README.md#生成-linux-安装包)。
+第二、三条按发行版二选一。归档的解压方法、需要自备的依赖和手动删除方式见 [Linux 宿主说明](https://github.com/metasequoiaime/msime/blob/linux-v0.11.0/platforms/linux/README.md#生成-linux-安装包)。
 
-同一个 Release 还提供水杉拼音、水杉五笔、水杉日语、水杉越南语和水杉藏文这几个独立版本（包名 `msime-linux-pinyin`、`msime-linux-wubi`、`msime-linux-japanese`、`msime-linux-vietnamese`、`msime-linux-tibetan`），装在 `/opt/msime-linux-<版本>` 下，可与完整版同时安装和启用。日语、越南语、藏文版不带中文词库和手写。
+**能不能装上，看系统的库版本。** `.deb` 和归档在 Debian 12 环境构建，要求 glibc 2.35、WebKitGTK 4.1 和 libsoup 3 及以上；`.rpm` 面向 Fedora 44 及提供同样库版本的 DNF 系统。具体情况：
+
+- linux-v0.11.0 的 `.deb` 把 Fcitx5 5.0.20 写成了硬依赖，只有 Fcitx5 5.0.14 的 Ubuntu 22.04 因此装不上。0.11.0 之后的下一个 Linux 版本改为 IBus 与 Fcitx5 有一个即可，Ubuntu 22.04 能装上并走 IBus（[#6305](https://github.com/metasequoiaime/msime/issues/6305)）。
+- UOS 20、Debian 10 这类 glibc 2.28 的系统装不上发布页的 `.deb`（[#6311](https://github.com/metasequoiaime/msime/issues/6311)）。0.11.0 之后的下一个 Linux 版本起，发布页另有 `msime-linux-legacy_<版本>_amd64.deb` 和 `msime-linux-legacy_<版本>_arm64.deb`，面向 glibc 2.28 到 2.34 的 Debian 系系统：只有 IBus 引擎，没有设置窗口和 Fcitx5 插件，要先 `sudo apt install ibus` 并把输入法框架切换到 IBus。0.11.0 里还没有这个包。
+- 默认使用 fcitx 4 的系统（UOS 20、麒麟 V10 等）没有对应的前端，只能改用 IBus。
+
+**也可以从软件源安装**，之后随系统更新升级。软件源里的包名是 `msime`，与发布页的 `msime-linux` 互相替换，卸载时用 `msime` 这个名字；它比发布页的包多带离线手写模型，主词库同样要在首次配置时下载。Ubuntu 24.04、26.04 用 Launchpad PPA，Fedora 43、44 用 COPR：
+
+```sh
+sudo add-apt-repository ppa:msime/ppa && sudo apt install msime
+sudo dnf copr enable msime/msime && sudo dnf install msime
+```
+
+openSUSE Tumbleweed、Debian testing/unstable 和 Arch Linux 由 openSUSE OBS 的 `home:msime` 项目提供；Arch 系也可以从 AUR 装 `msime`（源码构建）或 `msime-bin`（重新打包发布页的 `.rpm`，支持 aarch64）；NixOS 用 msime 仓库 `flake.nix` 提供的模块。各软件源的完整步骤见 [Linux 宿主说明的「包管理器」一节](https://github.com/metasequoiaime/msime/blob/linux-v0.11.0/platforms/linux/README.md#包管理器)。
+
+同一个 Release 还提供水杉拼音、水杉五笔、水杉日语、水杉越南语和水杉藏文这几个独立版本，同样有 x86_64 和 aarch64 两种架构的 `.deb`、`.rpm` 和归档（包名 `msime-linux-pinyin`、`msime-linux-wubi`、`msime-linux-japanese`、`msime-linux-vietnamese`、`msime-linux-tibetan`），装在 `/opt/msime-linux-<版本>` 下，可与完整版同时安装和启用。日语、越南语、藏文版不带中文词库和手写。
 
 **安装后还要做一次首次配置。** 安装本身不准备词库、也不替你选中输入法，完整版安装包也不附带主词库。打开应用列表中的「水杉输入法」，首次会进入配置页：勾选「词库不完整时从固定地址下载」，确认是否启用云候选，再点「开始配置」。也可以在终端运行：
 
@@ -54,7 +69,7 @@ msime-linux-setup --download
 
 「输入」页可以调整中英文默认状态、选词与翻页、云候选、中英混输、快捷模式、模糊音、辅助码和调频。全拼与双拼的辅助码默认开启，分别默认使用自然码和蓝天小雨点，另可选首右2.0、首右plus、小鹤和加加。模糊音默认关闭，首次开启时一次选中全部 11 条规则，可再删减。调频可选关闭、一次置顶、折半调频、线性调频或一次置前（默认）。
 
-Fcitx5 的中英文、简繁、工具栏等入口挂在输入法状态区，需要桌面提供托盘；以 `fcitx5 --disable notificationitem` 启动的发行版（例如 Omarchy）看不到这些入口，但输入不受影响，设置仍可从应用列表打开。Omarchy 上的主题同步、状态栏插件和 Hyprland 规则见 [Omarchy 说明](https://github.com/metasequoiaime/msime/blob/linux-v0.10.0/platforms/linux/README.md#omarchy)。
+Fcitx5 的中英文、简繁、工具栏等入口挂在输入法状态区，需要桌面提供托盘；以 `fcitx5 --disable notificationitem` 启动的发行版（例如 Omarchy）看不到这些入口，但输入不受影响，设置仍可从应用列表打开。Omarchy 上的主题同步、状态栏插件和 Hyprland 规则见 [Omarchy 说明](https://github.com/metasequoiaime/msime/blob/linux-v0.11.0/platforms/linux/README.md#omarchy)。
 
 ## 快捷模式与混合候选
 
@@ -107,8 +122,9 @@ systemctl --user restart msime-linux-voice.service
 
 - **列表里没有水杉**：确认已完成首次配置；已配置过的可运行 `msime-linux-setup --register` 重新加入列表，或按上文用 `fcitx5-configtool`、`ibus restart` 手动添加。
 - **选中后不能输入**：先按 `Ctrl + Shift + Alt + R`，或在「维护与诊断 → 输入法服务」点「重启」；仍不行就在另一个文本编辑器对比，记录桌面、Wayland/X11、输入法框架和所选方案。
+- **桌面上没有悬浮工具栏**：Linux 版不在桌面上画悬浮窗，工具栏在输入法菜单里：IBus 下在面板的属性菜单，Fcitx5 下在托盘状态区的菜单；GNOME 下的 IBus 只显示输入模式和设置两项，没有工具栏子菜单。linux-v0.11.0 设置页里的「在桌面显示悬浮工具栏」措辞有误，0.11.0 之后的下一个 Linux 版本改为「在输入法菜单显示工具栏」（[#6407](https://github.com/metasequoiaime/msime/issues/6407)）。
 - **语音无法录制**：提示“未找到录音工具”时安装上文的录音工具；豆包提示需要 websockets 时按上文安装。也可以先改用本地模型，区分采集问题和服务问题。
 - **在线结果不出现**：检查对应开关和凭据，先确认本地候选正常。
 - **需要日志**：在「维护与诊断 → 诊断日志」开启后复现，日志文件是数据目录下的 `diagnostic.log`，不记录按键、输入内容或候选文本。
 
-请向 [msime Issues](https://github.com/metasequoiaime/msime/issues) 反馈，并提供发行版、桌面环境、会话类型（Wayland/X11）、Fcitx5 或 IBus、输入法版本、安装方式与复现步骤。日志和截图先去除凭据及真实输入。各项联网功能的完整数据流见 [linux-v0.10.0 的网络请求与数据流向说明](https://github.com/metasequoiaime/msime/blob/linux-v0.10.0/PRIVACY.md)。
+请向 [msime Issues](https://github.com/metasequoiaime/msime/issues) 反馈，并提供发行版、桌面环境、会话类型（Wayland/X11）、Fcitx5 或 IBus、输入法版本、安装方式与复现步骤。日志和截图先去除凭据及真实输入。各项联网功能的完整数据流见 [linux-v0.11.0 的网络请求与数据流向说明](https://github.com/metasequoiaime/msime/blob/linux-v0.11.0/PRIVACY.md)。

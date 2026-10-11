@@ -54,6 +54,14 @@
 
 来源：[已关闭的 Windows #15](https://github.com/metasequoiaime/msime-windows/issues/15)、[外观设置指南](https://msime.app/docs/?platform=windows#外观)。
 
+### Linux 版打开了悬浮工具栏，为什么桌面上看不到？
+
+Linux 版不在桌面上画悬浮窗，设置里的工具栏开关控制的是输入法菜单里的工具栏：IBus 下在面板的属性菜单（「工具栏」子菜单），Fcitx5 下在托盘状态区的菜单。GNOME 桌面下的 IBus 只显示输入模式和设置两项，没有工具栏子菜单。
+
+linux-v0.11.0 的设置页把这个开关写成「在桌面显示悬浮工具栏」，容易让人以为会出现浮动条。0.11.0 之后的下一个 Linux 版本把它改名为「在输入法菜单显示工具栏」，并在页首说明 Linux 不显示悬浮窗。是否提供真正的桌面悬浮工具栏，维护者会作为单独的需求评估。
+
+来源：[已关闭的 msime #6407](https://github.com/metasequoiaime/msime/issues/6407)、[#6324](https://github.com/metasequoiaime/msime/issues/6324)。
+
 ## 安装与启动
 
 ### 水杉输入法支持哪些系统，去哪里下载？
@@ -64,7 +72,7 @@
 | --- | --- |
 | Windows 10 / 11 | 正式版是 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 发布的「Metasequoia IME 水杉输入法」；另有一个新版预览，区别见下文 |
 | macOS 13+ | 正式发布，下载 DMG 安装，见 [macOS 指南](https://msime.app/docs/?platform=macos) |
-| Linux | 正式发布，提供 Ubuntu PPA、Fedora COPR、Debian、openSUSE、Arch、NixOS 等安装方式，同一个安装包提供 Fcitx5 和 IBus 两个入口，见 [Linux 指南](https://msime.app/docs/?platform=linux) |
+| Linux | 正式发布，提供 x86_64 和 aarch64 安装包，另有 Ubuntu PPA、Fedora COPR、openSUSE OBS、Arch AUR、NixOS 等安装方式，同一个安装包提供 Fcitx5 和 IBus 两个入口，见 [Linux 指南](https://msime.app/docs/?platform=linux) |
 | Android 9+ | 测试版，从[蒲公英下载页](https://www.pgyer.com/msime)下载 APK 安装，尚未上架应用商店 |
 | iOS | 测试版，通过 [TestFlight 公开测试](https://testflight.apple.com/join/bUzPvyqt)安装，尚未上架 App Store |
 | HarmonyOS | 开发中，尚未发布安装包 |
@@ -74,6 +82,14 @@ Android 安装时系统可能提示“未经检测”或“存在风险”，这
 iOS 装好后，到“设置 → 通用 → 键盘 → 键盘 → 添加新键盘”中启用“水杉输入法”。TestFlight 的每个构建有效期为 90 天，到期前在 TestFlight 中更新即可，无需重新加入。
 
 依据：官网下载页与各平台 Release（2026-10-11：Windows 正式版 v0.9.5，macOS v0.52.0，Linux v0.11.0，Android v0.3.1，iOS v0.51.5）。
+
+### GitHub 下载太慢或打不开，还有别的下载渠道吗？
+
+有。[官网下载页](https://msime.app/download/)在各平台的下载按钮旁提供「国内镜像下载」，「其他安装包」里的每个包也有对应的「国内镜像」链接。镜像里的文件与 GitHub Release 相同，下载后照样按页面说明核对 SHA256。
+
+Windows 正式版另可从 QQ 群 829919142 的群文件或夸克网盘下载，夸克网盘的提取码见下载页。iOS 版通过 TestFlight 安装，不需要从 GitHub 下载。
+
+依据：官网下载页（2026-10-11）。
 
 ### 有鸿蒙（HarmonyOS）版吗？
 
@@ -99,6 +115,12 @@ TestFlight 链接提示“不接受新测试员”时，请稍后再试，或到
 反馈问题时请写清用的是哪一个、版本号多少：正式版到 msime-windows 反馈，新版到 msime 反馈。
 
 依据：msime 仓库的 README 与 [platforms/windows/README.md](https://github.com/metasequoiaime/msime/blob/develop/platforms/windows/README.md)，以及两个仓库的 Release（2026-10-11）。
+
+### Windows 正式版只能装在 C 盘吗？能改安装路径吗？
+
+不能改，这是 Windows 对输入法的要求，不是安装程序的限制。按微软 TSF（文本服务框架）文档的安装目录要求，输入法的 DLL 需要装在系统目录，文本服务需要装在 Program Files 目录，否则可能无法正常工作，所以安装程序不提供选择路径的选项，维护者已把这个需求标为不计划实现。
+
+来源：[已关闭的 Windows #756](https://github.com/metasequoiaime/msime-windows/issues/756)、[微软 TSF 安装目录要求](https://learn.microsoft.com/en-us/windows/win32/tsf/64-bit-platform-considerations#installation-directory-requirements)。
 
 ### 安装后切换不了输入法，Server 反复退出，或设置窗口一闪即关？
 
@@ -218,6 +240,16 @@ WebView2 下载页：选择 Evergreen Standalone Installer 下的 x64。
 
 来源：[已关闭的 Windows #14](https://github.com/metasequoiaime/msime-windows/issues/14)、[以词定字指南](https://msime.app/docs/?platform=windows#以词定字)。
 
+### macOS 上输入方案自己变成笔画、五笔或双拼，怎么改回全拼？
+
+先在菜单栏水杉图标的「输入方案」子菜单里选回想要的方案（例如全拼），或在设置的「输入方案」页重新选一次。
+
+macOS v0.52.0 有一个已知问题：输入法进程重启后（重新登录、重启电脑或更新之后），会先按输入法自己上次记下的方案工作，而不是设置里选的方案，有时还会把这个旧方案写回设置，表现为选好全拼后过一段时间又变回笔画、五笔或双拼。修复（[PR #5081](https://github.com/metasequoiaime/msime/pull/5081)）已经合入，随 0.52.0 之后的下一个 macOS 版本发布；在那之前如果重启后又变回去，按上面的方法再选一次。
+
+另外，在 macOS 27 上，输入法不能自己把「水杉输入法 · 笔」加进系统的输入法列表。当前方案是笔画、又没在「系统设置 → 键盘 → 输入法」里手动添加「笔」时，菜单栏会用「中」显示笔画；这时再选一次「中」不会切换方案，这是有意的设计，换方案请用上面的子菜单或设置页。
+
+来源：[已关闭的 msime #3841](https://github.com/metasequoiaime/msime/issues/3841)、[#4288](https://github.com/metasequoiaime/msime/issues/4288)。
+
 ## 翻译、数据与反馈
 
 ### 候选词的英文释义不准确，可以自己纠正吗？
@@ -261,4 +293,4 @@ mail	example@example.com	10
 
 公开前遮挡截图中的个人内容、日志里的凭据，不要直接附完整用户词库或配置文件。安全漏洞请按[安全策略](https://github.com/metasequoiaime/.github/blob/main/SECURITY.md)私下报告。
 
-本页于 2026-09-08 核对 Windows 已关闭 Issue、维护者回复及现行指南；2026-10-01 按 Windows v0.9.3 复查设置项与安装程序，并更新已在 v0.6.7 修复的工具栏图标问题 #232；2026-10-11 按各平台 Release 与官网下载页补充平台与下载相关问答。历史版本号只说明对应反馈的范围，不代表当前最新版；是否进入你使用的安装包，以 Release 为准。
+本页于 2026-09-08 核对 Windows 已关闭 Issue、维护者回复及现行指南；2026-10-01 按 Windows v0.9.3 复查设置项与安装程序，并更新已在 v0.6.7 修复的工具栏图标问题 #232；2026-10-11 按各平台 Release 与官网下载页补充平台与下载相关问答，并按 msime #3841、#4288、#6407 与 Windows #756 中维护者的答复补充 macOS 输入方案、Linux 工具栏和 Windows 安装路径问答。历史版本号只说明对应反馈的范围，不代表当前最新版；是否进入你使用的安装包，以 Release 为准。
