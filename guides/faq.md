@@ -73,7 +73,7 @@ linux-v0.11.0 的设置页把这个开关写成「在桌面显示悬浮工具栏
 | Windows 10 / 11 | 正式版是 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 发布的「Metasequoia IME 水杉输入法」；另有一个新版预览，区别见下文 |
 | macOS 13+ | 正式发布，下载 DMG 安装，见 [macOS 指南](https://msime.app/docs/?platform=macos) |
 | Linux | 正式发布，提供 x86_64 和 aarch64 安装包，另有 Ubuntu PPA、Fedora COPR、openSUSE OBS、Arch AUR、NixOS 等安装方式，同一个安装包提供 Fcitx5 和 IBus 两个入口，见 [Linux 指南](https://msime.app/docs/?platform=linux) |
-| Android 9+ | 测试版，从[蒲公英下载页](https://www.pgyer.com/msime)下载 APK 安装，尚未上架应用商店 |
+| Android 9+ | 测试版，从[蒲公英下载页](https://www.pgyer.com/msime)下载 APK 安装，尚未上架应用商店，见 [Android 指南](https://msime.app/docs/?platform=android) |
 | iOS | 测试版，通过 [TestFlight 公开测试](https://testflight.apple.com/join/bUzPvyqt)安装，尚未上架 App Store |
 | HarmonyOS | 开发中，尚未发布安装包 |
 
@@ -102,6 +102,18 @@ Windows 正式版另可从 QQ 群 829919142 的群文件或夸克网盘下载，
 iOS 词库中包含 GPL-3.0 授权的第三方数据，与 App Store 的条款存在冲突，需要先解决授权问题，所以是否上架尚未决定，目前只通过 TestFlight 公开测试分发。
 
 TestFlight 链接提示“不接受新测试员”时，请稍后再试，或到 [Telegram 群](https://t.me/msimegroup)确认当前开放状态。
+
+### iOS 键盘要不要打开「允许完全访问」？
+
+不打开也可以正常打字，键盘默认离线，不会因为没打开就上传输入内容。下面这些功能需要它：云候选、AI 助手候选、云剪贴板和同步，打字统计（键盘要把字数写进与 App 共享的存储），手写第一次下载识别模型，以及诊断日志。需要时到「设置 → 通用 → 键盘 → 键盘 → 水杉输入法」里打开「允许完全访问」。
+
+依据：iOS v0.51.5 的 App 引导、帮助页与 [iOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/ios/README.md)。
+
+### iPad 上切换到水杉后，马上又跳回原来的键盘？
+
+这是 iPadOS 27 上的已知问题，还在排查（[#6685](https://github.com/metasequoiaime/msime/issues/6685)）。从诊断日志看，键盘扩展刚加载就被系统结束，系统随即退回上一个键盘，并不是没装好或设置不对。v0.51.5 之后的下一个 iOS 版本会在诊断日志里加上内存读数，发布后请复现一次，在 App 里打开诊断日志并把记录贴到这个 issue 里；如果「设置 → 隐私与安全性 → 分析与改进 → 分析数据」里有名字以 `JetsamEvent` 或 `MSIMEKeyboardExtension` 开头、时间对得上的条目，也请一起附上，同时写明 iPad 型号、是否开着台前调度和用的输入方案。
+
+依据：msime #6685 中维护者的答复（2026-10-11）。
 
 ### Windows 上的「Metasequoia IME 水杉输入法」和「水杉输入法」有什么区别？
 
@@ -293,4 +305,4 @@ mail	example@example.com	10
 
 公开前遮挡截图中的个人内容、日志里的凭据，不要直接附完整用户词库或配置文件。安全漏洞请按[安全策略](https://github.com/metasequoiaime/.github/blob/main/SECURITY.md)私下报告。
 
-本页于 2026-09-08 核对 Windows 已关闭 Issue、维护者回复及现行指南；2026-10-01 按 Windows v0.9.3 复查设置项与安装程序，并更新已在 v0.6.7 修复的工具栏图标问题 #232；2026-10-11 按各平台 Release 与官网下载页补充平台与下载相关问答，并按 msime #3841、#4288、#6407 与 Windows #756 中维护者的答复补充 macOS 输入方案、Linux 工具栏和 Windows 安装路径问答。历史版本号只说明对应反馈的范围，不代表当前最新版；是否进入你使用的安装包，以 Release 为准。
+本页于 2026-09-08 核对 Windows 已关闭 Issue、维护者回复及现行指南；2026-10-01 按 Windows v0.9.3 复查设置项与安装程序，并更新已在 v0.6.7 修复的工具栏图标问题 #232；2026-10-11 按各平台 Release 与官网下载页补充平台与下载相关问答，并按 msime #3841、#4288、#6407 与 Windows #756 中维护者的答复补充 macOS 输入方案、Linux 工具栏和 Windows 安装路径问答；同日按 iOS v0.51.5 的 App 说明与 msime #6685 中维护者的答复补充 iOS 完全访问与 iPad 切换问答。历史版本号只说明对应反馈的范围，不代表当前最新版；是否进入你使用的安装包，以 Release 为准。

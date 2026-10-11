@@ -19,18 +19,18 @@
 | macOS 13+ | [macOS 使用指南](guides/macos.md) · [语音输入](guides/macos-voice.md) | 安装、原生设置、快捷键、数据与卸载；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布 |
 | Linux / Fcitx5 / IBus | [Linux 使用指南](guides/linux.md) | 安装与首次配置、设置、桌面工具、语音输入与排障；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布，同一个安装包提供 Fcitx5 与 IBus 两个入口 |
 | iOS | [iOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/ios/README.md) · [下载页](https://msime.app/download/) | 键盘扩展，通过 TestFlight 公开测试分发，尚未上架 App Store |
-| Android 9+ | [Android 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/android/README.md) · [下载页](https://msime.app/download/) | 测试版，APK 通过[蒲公英](https://www.pgyer.com/msime)分发并在 [msime](https://github.com/metasequoiaime/msime/releases) 以 `android-v*` 发布，尚未上架应用商店 |
+| Android 9+ | [Android 使用指南](guides/android.md) · [下载页](https://msime.app/download/) | 下载与版本、启用键盘、升级、中英文切换、9 键与 26 键、浮动键盘、外接键盘和语音；测试版，APK 通过[蒲公英](https://www.pgyer.com/msime)分发并在 [msime](https://github.com/metasequoiaime/msime/releases) 以 `android-v*` 发布，尚未上架应用商店 |
 | HarmonyOS | [HarmonyOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/harmony/README.md) | 开发中，尚未发布安装包 |
 | 跨平台 | [从其他输入法迁移](guides/migration.md) | 搜狗、微软拼音、Rime 的用户词库怎么带过来；导入格式目前按 Windows 版核对 |
 | 跨平台 | [无障碍现状](guides/accessibility.md) | 屏幕阅读器支持的实际状况与可参与的方向 |
 
-Windows、macOS、macOS 语音与 Linux 指南及常见问题（含繁體译文）是官网对应正文的唯一来源。修改用户说明请在本仓提交，msime-web 通过固定的 Docs 子模块渲染；构建/API 说明仍由各代码仓库维护。指南按已提交源码核对，具体安装版本可能有所不同，请结合 Release 阅读。
+Windows、macOS、macOS 语音、Linux 与 Android 指南及常见问题（含繁體译文）是官网对应正文的唯一来源。修改用户说明请在本仓提交，msime-web 通过固定的 Docs 子模块渲染；构建/API 说明仍由各代码仓库维护。指南按已提交源码核对，具体安装版本可能有所不同，请结合 Release 阅读。
 
 仓库边界与数据来源见[公共仓库与平台架构](architecture/repositories.md)。
 
 ## 繁體中文
 
-[Windows 使用指南](guides/zh-TW/windows.md) · [macOS 使用指南](guides/zh-TW/macos.md) · [macOS 語音](guides/zh-TW/macos-voice.md) · [Linux 使用指南](guides/zh-TW/linux.md) · [常見問題](guides/zh-TW/faq.md)。
+[Windows 使用指南](guides/zh-TW/windows.md) · [macOS 使用指南](guides/zh-TW/macos.md) · [macOS 語音](guides/zh-TW/macos-voice.md) · [Linux 使用指南](guides/zh-TW/linux.md) · [Android 使用指南](guides/zh-TW/android.md) · [常見問題](guides/zh-TW/faq.md)。
 
 繁體譯文與簡體原文均在本倉維護，網站使用固定 gitlink 渲染。`guides/zh-TW/sources.json` 記錄翻譯核對的來源提交與內容摘要；原文變更時需同步核對譯文。程式碼、檔名及引號內的應用程式選項保留原文，避免與實際介面不符。
 
