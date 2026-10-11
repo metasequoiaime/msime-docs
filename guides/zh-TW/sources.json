@@ -23,12 +23,22 @@
     },
     "android.md": {
       "source": "guides/android.md",
-      "sourceSha256": "986d7c892090d4d151a768d75ded22e2b3909edf47e0db349839446097791390",
+      "sourceSha256": "d10c476b01c171a46620c56e4a01b71ea2b58ed03debb877a784feeeefd4dadc",
       "translation": "guides/zh-TW/android.md"
+    },
+    "ios.md": {
+      "source": "guides/ios.md",
+      "sourceSha256": "c5ee974202c5502b84cd2497ed96a785a639fce95f16afc52cd4841b190f78fd",
+      "translation": "guides/zh-TW/ios.md"
+    },
+    "migration.md": {
+      "source": "guides/migration.md",
+      "sourceSha256": "5519dbe9b7c4e7aa0bb84d5064a0e0210b66c47533ca2a335bfaa02855cee3c6",
+      "translation": "guides/zh-TW/migration.md"
     },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "cebcceb5d0392519babb8c0b991a235a875754afd40812422be6bb3321e6a368",
+      "sourceSha256": "c6a6674e33cb9b7520c92b0bdc2a860d7795ed95dbcd32285ac7afa1a82184c4",
       "translation": "guides/zh-TW/faq.md"
     }
   },

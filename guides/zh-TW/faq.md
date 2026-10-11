@@ -83,7 +83,7 @@ Android 安裝時系統可能提示“未經檢測”或“存在風險”，這
 
 iOS 裝好後，到“設定 → 一般 → 鍵盤 → 鍵盤 → 新增鍵盤”中啟用“水杉输入法”。TestFlight 的每個建置有效期為 90 天，到期前在 TestFlight 中更新即可，無需重新加入。
 
-依據：官網下載頁與各平臺 Release（2026-10-11：Windows 正式版 v0.9.5，macOS v0.52.0，Linux v0.11.0，Android v0.3.1，iOS v0.51.5）。
+依據：官網下載頁（2026-10-11）與各平臺 Release（2026-10-12：Windows 正式版 v0.10.1，macOS v0.52.0，Linux v0.11.0，Android v0.3.1，iOS v0.51.5）。
 
 ### GitHub 下載太慢或打不開，還有別的下載管道嗎？
 
@@ -121,7 +121,7 @@ TestFlight 連結提示“不接受新測試員”時，請稍後再試，或到
 
 兩者是不同的產品，資料各自獨立：
 
-- **Metasequoia IME 水杉输入法**是目前的 Windows 正式版，由 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 建置、簽章和發布，版本號目前是 v0.9.x。[Windows 指南](https://msime.app/zh-TW/docs/windows/)和本頁的 Windows 排查都針對它。
+- **Metasequoia IME 水杉输入法**是目前的 Windows 正式版，由 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 建置、簽章和發布，版本號以那裡的 Release 為準。[Windows 指南](https://msime.app/zh-TW/docs/windows/)和本頁的 Windows 排查都針對它。
 - **水杉输入法**是 [msime](https://github.com/metasequoiaime/msime/releases) 倉庫裡遷移出來的新實作，以預發布（windows-v0.2.x）提供。除完整版外，還有水杉拼音、水杉五笔、水杉日语、水杉越南语和水杉藏文幾個可以單獨安裝的版本。它的安裝套件尚未啟用程式碼簽章，安裝時 Windows 可能提示發行者不明。
 
 日常使用請安裝正式版。從 windows-v0.2.1 起，新版與正式版使用各自的系統註冊資訊和資料目錄，可以同時安裝；更早的 windows-v0.1.0、v0.2.0 完整版沿用正式版的註冊資訊，裝上會覆蓋正式版，解除安裝時也會一併刪除它，不要再安裝這兩個版本。
@@ -264,6 +264,23 @@ macOS v0.52.0 有一個已知問題：輸入法行程重新啟動後（重新登
 
 來源：[已關閉的 msime #3841](https://github.com/metasequoiaime/msime/issues/3841)、[#4288](https://github.com/metasequoiaime/msime/issues/4288)。
 
+### 水杉能載入 Rime 的方案、Lua 或 iRime 設定嗎？
+
+不能。水杉用的是自己的輸入引擎，不是 Rime 的前端，讀不了 Rime 的 `schema.yaml` 輸入方案和 Lua 指令碼，iRime 等以 Rime 為基礎的應用程式的設定也不能直接套用。輸入方案請在水杉的設定裡選擇。
+
+能帶過來的是詞：Rime 的 `*.dict.yaml` 詞庫，以及用 `rime_dict_manager` 匯出的使用者詞典文字，可以作為詞庫匯入。編碼欄是雙拼、五筆或注音時不能直接當全拼匯入，做法和各平臺的入口見[從其他輸入法遷移](https://github.com/metasequoiaime/msime-docs/blob/main/guides/zh-TW/migration.md)。
+
+依據：msime 與 msime-windows 原始碼中沒有 Rime 引擎或 Lua 執行環境（2026-10-12 核對）；匯入格式見遷移指南。
+
+### 候選字視窗能展開成多行多列嗎？
+
+要看平臺：
+
+- **Windows 正式版**：目前不行。候選字視窗只有橫向和縱向兩種排列，多行多列的網格要先定下數字鍵怎麼選、怎麼翻頁、方向鍵怎麼移動，需求記在 [msime-windows #21](https://github.com/metasequoiaime/msime-windows/issues/21)，還在討論方案。現在可以在“设置 → 外观”把“候选项排列方式”改成縱向，或調整“每页候选项数量”，見上文“候選字視窗太大、字太小，或每頁候選數量不合習慣？”一問。
+- **Android 和 iOS**：候選字多於一行時，點候選欄右端的箭頭展開整頁。
+
+依據：[msime-windows #21](https://github.com/metasequoiaime/msime-windows/issues/21) 中維護者的答覆、[Android 指南](https://msime.app/zh-TW/docs/android/)，以及 iOS v0.51.5 App 的使用說明。
+
 ## 翻譯、資料與回報
 
 ### 候選詞的英文釋義不準確，可以自己糾正嗎？
@@ -299,6 +316,20 @@ mail	example@example.com	10
 
 依據：[Windows 指南 · 更新、備份與故障排查](https://msime.app/zh-TW/docs/windows/#更新備份與故障排查)、[雲端候選字](https://msime.app/zh-TW/docs/windows/#雲端候選字)。
 
+### 換電腦或多裝置時，詞庫和設定能同步嗎？
+
+各平臺的做法不同，按你用的版本看：
+
+- **Windows 正式版**：沒有帳號同步。在“词库”頁用“导出词库”分別匯出拼音、五筆和英文使用者詞庫，在“实用功能 → 快捷短语”匯出快捷片語，到新電腦上再分別匯入。
+- **Android**：登入後在「我的 → 云同步」開啟，同步設定、常用語、自訂佈景主題和詞庫詞條，命名詞庫的名稱和啟用狀態不同步；雲端已有資料時，第一次開啟要選「合并」或「使用云端」。不想登入時，可以在「我的 → 备份与恢复」匯出備份檔，換手機後從這個檔案還原。
+- **iOS**：登入後，「我的」裡會出現「设置同步」和「云词库」。「设置同步」可以上傳本機設定或下載並套用雲端設定，範圍是輸入方案、簡繁體、鍵盤聲音與觸感、詞庫學習開關和佈景主題。
+- **macOS**：在設定的「账号与同步」頁登入後，可以把這台 Mac 的設定上傳到雲端或從雲端取回，雲端詞庫保存自造詞與調頻記錄。也可以在「词库」頁用「导出当前类型」匯出使用者詞庫，到新電腦上匯入。
+- **Linux**：在「词库」頁用「导出当前类型」匯出使用者詞庫，到新電腦上匯入。
+
+各平臺匯入詞庫的入口見[從其他輸入法遷移](https://github.com/metasequoiaime/msime-docs/blob/main/guides/zh-TW/migration.md)。
+
+依據：Windows v0.10.1 設定頁、android-v0.3.1 的「我的」頁與雲端同步、備份程式碼、iOS v0.51.5 的帳號與設定同步頁、macos-v0.52.0 的帳號視窗，以及桌面設定的詞庫頁原始碼（2026-10-12 核對）。
+
 ### 上面的方法都沒解決，回報時需要提供什麼？
 
 準備輸入法版本、作業系統版本、輸入方案、重現步驟、預期結果和實際結果，附能說明現象的截圖。應用相容問題請增加應用名稱、版本、權限狀態；顯示問題增加字型、縮放比例和渲染方式。
@@ -307,4 +338,4 @@ mail	example@example.com	10
 
 公開前遮擋截圖中的個人內容、日誌裡的憑證，不要直接附完整使用者詞庫或配置檔案。安全漏洞請按[安全策略](https://github.com/metasequoiaime/.github/blob/main/SECURITY.md)私下報告。
 
-本頁於 2026-09-08 核對 Windows 已關閉 Issue、維護者回復及現行指南；2026-10-01 按 Windows v0.9.3 複查設定項與安裝程式，並更新已在 v0.6.7 修復的工具列圖示問題 #232；2026-10-11 按各平臺 Release 與官網下載頁補充平臺與下載相關問答，並按 msime #3841、#4288、#6407 與 Windows #756 中維護者的答覆補充 macOS 輸入方案、Linux 工具列和 Windows 安裝路徑問答；同日按 iOS v0.51.5 的 App 說明與 msime #6685 中維護者的答覆補充 iOS 完全取用與 iPad 切換問答。歷史版本號只說明對應回報的範圍，不代表目前最新版；是否進入你使用的安裝套件，以 Release 為準。
+本頁於 2026-09-08 核對 Windows 已關閉 Issue、維護者回復及現行指南；2026-10-01 按 Windows v0.9.3 複查設定項與安裝程式，並更新已在 v0.6.7 修復的工具列圖示問題 #232；2026-10-11 按各平臺 Release 與官網下載頁補充平臺與下載相關問答，並按 msime #3841、#4288、#6407 與 Windows #756 中維護者的答覆補充 macOS 輸入方案、Linux 工具列和 Windows 安裝路徑問答；同日按 iOS v0.51.5 的 App 說明與 msime #6685 中維護者的答覆補充 iOS 完全取用與 iPad 切換問答。2026-10-12 按 Windows v0.10.1 更新版本號，並按 android-v0.3.1、ios-v0.51.5、macos-v0.52.0、linux-v0.11.0 與 Windows v0.10.1 的原始碼及 msime-windows #21 中維護者的答覆，補充多裝置同步、Rime 設定和候選字展開問答。歷史版本號只說明對應回報的範圍，不代表目前最新版；是否進入你使用的安裝套件，以 Release 為準。
