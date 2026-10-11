@@ -1,6 +1,6 @@
 # 常見問題 Q&A
 
-從實際回報中整理的排查辦法。先找到與你相同的現象，再按步驟檢查；這裡以 Windows 為主，其他平臺請查閱對應指南。
+從實際回報中整理的排查辦法。先找到與你相同的現象，再按步驟檢查。平臺與下載的問題適用於所有平臺，其餘排查以 Windows 為主，其他平臺請查閱對應指南。
 
 本頁採用臺灣繁體中文用語；引號內的應用程式選項、程式碼、檔名與範例保留原文，方便對照實際介面。
 
@@ -57,6 +57,50 @@
 來源：[已關閉的 Windows #15](https://github.com/metasequoiaime/msime-windows/issues/15)、[外觀設定指南](https://msime.app/zh-TW/docs/windows/#外觀)。
 
 ## 安裝與啟動
+
+### 水杉輸入法支援哪些系統，去哪裡下載？
+
+所有安裝入口都在[官網下載頁](https://msime.app/zh-TW/download/)，下載後請按頁面說明核對 SHA256。各平臺目前的狀態：
+
+| 平臺 | 狀態與取得方式 |
+| --- | --- |
+| Windows 10 / 11 | 正式版是 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 發布的「Metasequoia IME 水杉输入法」；另有一個新版預覽，差異見下文 |
+| macOS 13+ | 正式發布，下載 DMG 安裝，見 [macOS 指南](https://msime.app/zh-TW/docs/macos/) |
+| Linux | 正式發布，提供 Ubuntu PPA、Fedora COPR、Debian、openSUSE、Arch、NixOS 等安裝方式，同一個安裝套件提供 Fcitx5 和 IBus 兩個入口，見 [Linux 指南](https://msime.app/zh-TW/docs/linux/) |
+| Android 9+ | 測試版，從[蒲公英下載頁](https://www.pgyer.com/msime)下載 APK 安裝，尚未上架應用程式商店 |
+| iOS | 測試版，透過 [TestFlight 公開測試](https://testflight.apple.com/join/bUzPvyqt)安裝，尚未上架 App Store |
+| HarmonyOS | 開發中，尚未發布安裝套件 |
+
+Android 安裝時系統可能提示“未經檢測”或“存在風險”，這是對商店外應用程式的通用提示；只從上面的蒲公英連結下載，不要安裝來路不明的 APK。裝好後開啟水杉輸入法，按引導到系統設定中啟用並切換為目前的輸入法。新版本下載後覆蓋安裝即可，詞庫和設定不會遺失。
+
+iOS 裝好後，到“設定 → 一般 → 鍵盤 → 鍵盤 → 新增鍵盤”中啟用“水杉输入法”。TestFlight 的每個建置有效期為 90 天，到期前在 TestFlight 中更新即可，無需重新加入。
+
+依據：官網下載頁與各平臺 Release（2026-10-11：Windows 正式版 v0.9.5，macOS v0.52.0，Linux v0.11.0，Android v0.3.1，iOS v0.51.5）。
+
+### 有鴻蒙（HarmonyOS）版嗎？
+
+正在開發，還沒有發布安裝套件，也沒有上架應用程式市場。原始碼在 msime 倉庫的 [platforms/harmony](https://github.com/metasequoiaime/msime/tree/develop/platforms/harmony) 目錄，開發中的建置不保證穩定。
+
+鴻蒙 NEXT（HarmonyOS 5 及以上）不能安裝 Android 的 APK，所以 Android 測試版也裝不上。發布安裝套件後，[官網下載頁](https://msime.app/zh-TW/download/)會提供入口。
+
+### iOS 版為什麼不在 App Store？
+
+iOS 詞庫中包含 GPL-3.0 授權的第三方資料，與 App Store 的條款存在衝突，需要先解決授權問題，所以是否上架尚未決定，目前只透過 TestFlight 公開測試發布。
+
+TestFlight 連結提示“不接受新測試員”時，請稍後再試，或到 [Telegram 群組](https://t.me/msimegroup)確認目前的開放狀態。
+
+### Windows 上的「Metasequoia IME 水杉输入法」和「水杉输入法」有什麼區別？
+
+兩者是不同的產品，資料各自獨立：
+
+- **Metasequoia IME 水杉输入法**是目前的 Windows 正式版，由 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 建置、簽章和發布，版本號目前是 v0.9.x。[Windows 指南](https://msime.app/zh-TW/docs/windows/)和本頁的 Windows 排查都針對它。
+- **水杉输入法**是 [msime](https://github.com/metasequoiaime/msime/releases) 倉庫裡遷移出來的新實作，以預發布（windows-v0.2.x）提供。除完整版外，還有水杉拼音、水杉五笔、水杉日语、水杉越南语和水杉藏文幾個可以單獨安裝的版本。它的安裝套件尚未啟用程式碼簽章，安裝時 Windows 可能提示發行者不明。
+
+日常使用請安裝正式版。從 windows-v0.2.1 起，新版與正式版使用各自的系統註冊資訊和資料目錄，可以同時安裝；更早的 windows-v0.1.0、v0.2.0 完整版沿用正式版的註冊資訊，裝上會覆蓋正式版，解除安裝時也會一併刪除它，不要再安裝這兩個版本。
+
+回報問題時請寫清用的是哪一個、版本號多少：正式版到 msime-windows 回報，新版到 msime 回報。
+
+依據：msime 倉庫的 README 與 [platforms/windows/README.md](https://github.com/metasequoiaime/msime/blob/develop/platforms/windows/README.md)，以及兩個倉庫的 Release（2026-10-11）。
 
 ### 安裝後切換不了輸入法，Server 反覆退出，或設定視窗一閃即關？
 
@@ -215,8 +259,8 @@ mail	example@example.com	10
 
 準備輸入法版本、作業系統版本、輸入方案、重現步驟、預期結果和實際結果，附能說明現象的截圖。應用相容問題請增加應用名稱、版本、權限狀態；顯示問題增加字型、縮放比例和渲染方式。
 
-先搜尋相同問題，再提交 Bug：Windows 在 [msime-windows Issues](https://github.com/metasequoiaime/msime-windows/issues)，macOS、iOS 和 Linux 在 [msime Issues](https://github.com/metasequoiaime/msime/issues)。沒有 GitHub 帳號時，可用[官網回報頁](https://msime.app/zh-TW/feedback/)選擇平臺回報問題或提出建議。macOS 和 Linux 請分別檢視[macOS 指南](https://msime.app/zh-TW/docs/macos/)、[Linux 指南](https://msime.app/zh-TW/docs/linux/)。
+先搜尋相同問題，再提交 Bug：Windows 正式版在 [msime-windows Issues](https://github.com/metasequoiaime/msime-windows/issues)，macOS、Linux、Android、iOS 和新版 Windows（水杉输入法，windows-v0.2.x）在 [msime Issues](https://github.com/metasequoiaime/msime/issues)。沒有 GitHub 帳號時，可用[官網回報頁](https://msime.app/zh-TW/feedback/)選擇平臺回報問題或提出建議，也可以到 QQ 群 829919142 或 [Telegram 群組](https://t.me/msimegroup)交流。在 QQ 群裡 @ 機器人可以直接詢問使用問題，它按本站文件回答，答不出來時會請管理員來看。macOS 和 Linux 請分別檢視[macOS 指南](https://msime.app/zh-TW/docs/macos/)、[Linux 指南](https://msime.app/zh-TW/docs/linux/)。
 
 公開前遮擋截圖中的個人內容、日誌裡的憑證，不要直接附完整使用者詞庫或配置檔案。安全漏洞請按[安全策略](https://github.com/metasequoiaime/.github/blob/main/SECURITY.md)私下報告。
 
-本頁於 2026-09-08 核對 Windows 已關閉 Issue、維護者回復及現行指南；2026-10-01 按 Windows v0.9.3 複查設定項與安裝程式，並更新已在 v0.6.7 修復的工具列圖示問題 #232。歷史版本號只說明對應回報的範圍，不代表目前最新版；是否進入你使用的安裝套件，以 Release 為準。
+本頁於 2026-09-08 核對 Windows 已關閉 Issue、維護者回復及現行指南；2026-10-01 按 Windows v0.9.3 複查設定項與安裝程式，並更新已在 v0.6.7 修復的工具列圖示問題 #232；2026-10-11 按各平臺 Release 與官網下載頁補充平臺與下載相關問答。歷史版本號只說明對應回報的範圍，不代表目前最新版；是否進入你使用的安裝套件，以 Release 為準。
