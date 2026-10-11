@@ -21,9 +21,14 @@
       "sourceSha256": "b5bc8c3e719f84aad5625ccd539e16ec59a6303b6bc14508b91fdd83be553205",
       "translation": "guides/zh-TW/linux.md"
     },
+    "android.md": {
+      "source": "guides/android.md",
+      "sourceSha256": "986d7c892090d4d151a768d75ded22e2b3909edf47e0db349839446097791390",
+      "translation": "guides/zh-TW/android.md"
+    },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "7171a22850438fd2eaeea4c5dd68eaf7e3ecb6d392395070f13d6c9eeefcc074",
+      "sourceSha256": "cebcceb5d0392519babb8c0b991a235a875754afd40812422be6bb3321e6a368",
       "translation": "guides/zh-TW/faq.md"
     }
   },
