@@ -35,6 +35,18 @@
 
 在記事本等文字框中切換到水杉，確認處於中文狀態和全拼方案，輸入 `nihao`，按空格選擇反白候選；也可按候選前的數字選擇。`Esc` 取消，`Enter` 提交原始字母串。透過輸入法右鍵選單或懸浮工具列的設定入口調整方案。
 
+## 命令列與 MCP
+
+現代 Windows 設定中的「連線 AI 助手」頁面可以把本機 `msime-mcp.exe` 註冊給 Claude Desktop、Cursor 等用戶端，並顯示目前已授予的權限。Windows 安裝包會將它放在輸入法安裝目錄的 `server` 子目錄。
+
+也可以直接在終端機執行：
+
+```powershell
+msime-mcp.exe expand nihao --json
+```
+
+`expand` 讀取目前方案的本地候選；`msime-mcp tools` 可列出 MCP 工具，`msime-mcp call lookup_candidates '{"code":"nihao"}'` 可呼叫候選工具。讀取使用者詞庫或修改設定時，必須明確授予 `--allow-dictionary-read` 或 `--allow-write`。完整 JSONL 會話介面與權限說明見[命令列與 MCP](../cli-mcp.md)。
+
 ## 設定視窗
 
 下面按照設定視窗左側功能區從上到下的順序逐項說明。配置修改後會自動儲存，一般不需要再點“应用”或“确定”。

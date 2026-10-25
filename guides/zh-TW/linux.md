@@ -47,6 +47,18 @@ msime-linux-setup --download
 
 如果在首次設定之前就選取了水杉，Fcitx5 會在輸入面板上提示先完成首次設定，IBus 下會開啟設定視窗或發出桌面通知引導設定。
 
+## 命令列與 MCP
+
+完整版 `.deb`、`.rpm`、歸檔和發行版套件會將 `msime-mcp` 安裝到 `/usr/bin`，並提供 `msime` 符號連結；Nix 套件目前不含這兩個入口。
+
+```sh
+msime expand nihao --json
+printf 'nihao\nzhongguo\n' | msime expand - --json
+msime config get scheme
+```
+
+`expand` 不會存取雲端候選、AI 服務或前文上下文。`msime session` 會以 JSONL 驅動獨立的完整 Host API 會話。讀取使用者詞庫與修改設定需要分別授予 `--allow-dictionary-read`、`--allow-write`。完整說明見[命令列與 MCP](../cli-mcp.md)。
+
 ## 輸入與快捷鍵
 
 | 操作 | 方法 |

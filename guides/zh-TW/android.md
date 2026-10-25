@@ -83,6 +83,10 @@
 - **換佈景主題**：點鍵盤工具列上的衣架圖示，或在「设置 → 皮肤」裡選擇。
 - **隱私**：鍵盤預設離線，只有使用雲端候選字、AI、語音、帳號同步等功能時才連網，詳見 [PRIVACY.md](https://github.com/metasequoiaime/msime/blob/develop/PRIVACY.md)。
 
+## 桌面 CLI 與 MCP
+
+Android 發行 APK 是原生輸入法宿主，不包含桌面版的 `msime`、`msime-mcp` 或 MCP stdio 服務。需要查詢候選、驅動測試會話或連線 AI 助手時，請在安裝 macOS、Linux 或 Windows 桌面版的電腦上使用對應 CLI；Android 的設定和輸入資料不會自動提供給桌面 CLI。桌面命令說明見[命令列與 MCP](../cli-mcp.md)。
+
 ## 回報問題
 
 在應用程式的「我的 → 帮助与反馈」裡提交，可以附上截圖和診斷資訊；也可以先搜尋 [msime Issues](https://github.com/metasequoiaime/msime/issues)，沒有相同問題時再新建，並寫明手機型號、Android 版本和水杉版本。

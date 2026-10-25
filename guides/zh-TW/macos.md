@@ -24,6 +24,22 @@ brew install --cask metasequoiaime/tap/msime
 
 其他版本的 cask 是 `msime-wubi`、`msime-pinyin`、`msime-japanese`、`msime-vietnamese` 和 `msime-tibetan`。裝完仍要按上面第 3 步開啟一次應用程式並點「立即安装」。完整版的 cask 還會把 `msime-mcp` 放進 `PATH`，供在終端機裡配置的 AI 助理使用。
 
+## 命令列與 MCP
+
+完整版安裝包中的 `msime-mcp` 同時提供 `msime` 命令：
+
+```sh
+msime expand nihao --json
+printf 'nihao\nzhongguo\n' | msime expand - --json
+msime config get scheme
+```
+
+`expand` 只查詢本地詞典候選；`msime session` 以 JSONL 驅動獨立的完整 Host API 會話。執行 `msime-mcp tools`、`msime-mcp call <tool> '<json>'` 或 `msime-mcp prompt diagnose` 可操作 MCP。讀取使用者詞庫和修改設定分別受 `--allow-dictionary-read`、`--allow-write` 控制。完整說明見[命令列與 MCP](../cli-mcp.md)。
+
+```sh
+printf '%s\n' '{"op":"text","value":"nihao"}' '{"op":"command","value":"finish"}' | msime session
+```
+
 ## 常用操作
 
 | 操作 | 按鍵或入口 |
