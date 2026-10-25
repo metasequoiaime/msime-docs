@@ -3,37 +3,37 @@
   "files": {
     "windows.md": {
       "source": "guides/windows.md",
-      "sourceSha256": "614599db2be933636bc8b25fcee4067ababf479d17296aacca8365c94defa0b6",
+      "sourceSha256": "f9ae59bbd1f4c4457a641c6650e4af21793f63c1bf81bad43daa0307da61e4dd",
       "translation": "guides/zh-TW/windows.md"
     },
     "macos.md": {
       "source": "guides/macos.md",
-      "sourceSha256": "9e0955b0c4237b5b806a13defedec15c06a576b2fe02fdb20455ccad7cf47475",
+      "sourceSha256": "5ba3796af4e93283d473d070671893d8ad30c1826fad57732d9d42d0bd2f8f67",
       "translation": "guides/zh-TW/macos.md"
     },
     "macos-voice.md": {
       "source": "guides/macos-voice.md",
-      "sourceSha256": "6870cb080749f2f51c1e350c706ae401d95d70b4da18329f9e54656857314e9e",
+      "sourceSha256": "4bdfbe0a0930b33b6ea61ee43ae17e3748b70a6b75877130a1776506a776db4a",
       "translation": "guides/zh-TW/macos-voice.md"
     },
     "linux.md": {
       "source": "guides/linux.md",
-      "sourceSha256": "0eb2450e250dde7ae0abb0f80417ab614295cca1f992b556bc08cb495f8c9002",
+      "sourceSha256": "77a5d3470f4ab370953ec806fee34c93fa0fecc19d34044447ed7019bac7ff74",
       "translation": "guides/zh-TW/linux.md"
     },
     "android.md": {
       "source": "guides/android.md",
-      "sourceSha256": "f7959f3547fa12a2232eb47f3f2c372c40037bab8a54f0981a77ba93972f607b",
+      "sourceSha256": "e82c7f7f9b9660c5b04b69b019f8de09edf6698e126b3b8565c978bac08c5508",
       "translation": "guides/zh-TW/android.md"
     },
     "ios.md": {
       "source": "guides/ios.md",
-      "sourceSha256": "295bada82d7fdd6c0e03e4dae6e0734ea257b7ed808bfaa1be8fa92f4085c46a",
+      "sourceSha256": "f6c68f02c9bcff4b6b26e3f7910b7ffc2fec2a653690e0ef578f85c9727b89fe",
       "translation": "guides/zh-TW/ios.md"
     },
     "migration.md": {
       "source": "guides/migration.md",
-      "sourceSha256": "5519dbe9b7c4e7aa0bb84d5064a0e0210b66c47533ca2a335bfaa02855cee3c6",
+      "sourceSha256": "5f2e0a6664445392dbc5f206e45e68e3a5feba2feebdfec773d8b1d7238df6e8",
       "translation": "guides/zh-TW/migration.md"
     },
     "faq.md": {

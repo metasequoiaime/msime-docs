@@ -4,7 +4,7 @@
 
 本頁採用臺灣繁體中文用語；引號內的應用程式選項、程式碼、檔名與範例保留原文，方便對照實際介面。
 
-本文按 2026-10-01 核對的 Windows 原始碼（v0.9.3）整理。安裝套件可能早於原始碼，找不到某個選項時請先檢視該版本的發布說明。
+本文按 [msime](https://github.com/metasequoiaime/msime) 當前 `develop` 原始碼核對；Windows 正式版來自獨立的 [msime-windows](https://github.com/metasequoiaime/msime-windows) 發行線。安裝套件可能早於原始碼，找不到某個選項時請先檢視對應 Release 的發布說明。
 
 ## 下載安裝
 

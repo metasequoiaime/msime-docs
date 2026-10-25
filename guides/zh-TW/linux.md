@@ -1,6 +1,6 @@
 # Linux 使用指南
 
-水杉 Linux 版的同一個安裝套件同時提供 Fcitx5 外掛和 IBus 引擎，兩者共用同一套引擎與設定，支援全拼、雙拼、五筆、日語、韓語、粵拼、注音、越南文和藏文等方案，並附帶設定視窗、手寫、螢幕小鍵盤、剪貼簿歷史和語音輸入。本文按 [msime](https://github.com/metasequoiaime/msime) 主儲存庫發布的 [linux-v0.11.0](https://github.com/metasequoiaime/msime/releases/tag/linux-v0.11.0) 整理；其他版本可能存在功能差異，請同時檢視對應 Release。
+水杉 Linux 版的同一個安裝套件同時提供 Fcitx5 外掛和 IBus 引擎，兩者共用同一套引擎與設定，支援全拼、雙拼、五筆、日語、韓語、粵拼、注音、越南文和藏文等方案，並附帶設定視窗、手寫、螢幕小鍵盤、剪貼簿歷史和語音輸入。本文按 [msime](https://github.com/metasequoiaime/msime) 當前 `develop` 原始碼核對；安裝套件功能和版本以對應 Release 為準。不同版本可能存在功能差異，請同時檢視對應 Release。
 
 已歸檔的 [msime-linux](https://github.com/metasequoiaime/msime-linux) 儲存庫（v0.8.2 及更早，僅 IBus）不再更新，它的套件名稱、設定程式和設定檔位置都與本文不同，本文不適用於它。
 

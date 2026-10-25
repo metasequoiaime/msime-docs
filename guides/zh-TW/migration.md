@@ -2,7 +2,7 @@
 
 從搜狗、微軟拼音或 Rime 換到水杉，最麻煩的一步是把累積多年的自造詞帶過來。本文說明各家能匯出什麼、水杉需要什麼格式，以及怎麼轉換。
 
-本文的匯入格式、預設值和「按來源選擇匯入方式」裡的入口名稱，按 2026-10-01 核對的 Windows 正式版 v0.9.3 原始碼整理，匯入規則在 [msime-windows](https://github.com/metasequoiaime/msime-windows) 的 `server/src/settings/dictionary_validation.cpp` 與 `dictionary_manager.cpp` 裡，可以對照核對。macOS、Linux、Android 和 iOS 的匯入入口與可選格式見[各平台的匯入入口](#各平台的匯入入口)，按 2026-10-12 核對的 macos-v0.52.0、linux-v0.11.0、android-v0.3.1 與 ios-v0.51.5 原始碼整理。
+本文的匯入格式、預設值和「按來源選擇匯入方式」裡的入口名稱，按當前 `develop` 原始碼核對。Windows 的匯入規則在 [msime-windows](https://github.com/metasequoiaime/msime-windows) 的 `server/src/settings/dictionary_validation.cpp` 與 `dictionary_manager.cpp` 中；macOS、Linux、Android 和 iOS 的匯入入口與可選格式見[各平台的匯入入口](#各平台的匯入入口)。安裝包中的實際入口可能隨 Release 變化，請以對應版本為準。
 
 ## 水杉需要什麼格式
 

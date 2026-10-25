@@ -2,7 +2,7 @@
 
 水杉输入法（Metasequoia IME）是一款面向 Windows 10、Windows 11 的开源中文输入法，采用纯 TSF 方案。目前支持全拼、双拼、86 五笔和日语罗马音输入，也提供辅助码、云候选、AI 联想、语音输入、手写输入和快捷短语等功能。
 
-本文按 2026-10-01 核对的 Windows 源码（v0.9.3）整理。安装包可能早于源码，找不到某个选项时请先查看该版本的发布说明。
+本文按 [msime](https://github.com/metasequoiaime/msime) 当前 `develop` 源码核对；Windows 正式版来自独立的 [msime-windows](https://github.com/metasequoiaime/msime-windows) 发布线。安装包可能早于源码，找不到某个选项时请先查看对应 Release 的发布说明。
 
 ## 下载安装
 

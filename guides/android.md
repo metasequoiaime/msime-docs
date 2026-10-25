@@ -1,6 +1,6 @@
 # Android 使用指南
 
-水杉 Android 版是一个系统输入法，由键盘和同名的设置应用组成，支持 Android 9 及以上版本，目前是测试版，尚未上架应用商店。本文按 [msime](https://github.com/metasequoiaime/msime) 主仓发布的 [android-v0.3.1](https://github.com/metasequoiaime/msime/releases/tag/android-v0.3.1) 整理；其他版本可能存在功能差异，请同时查看对应 Release。
+水杉 Android 版是一个系统输入法，由键盘和同名的设置应用组成，支持 Android 9 及以上版本，目前是测试版，尚未上架应用商店。本文按 [msime](https://github.com/metasequoiaime/msime) 当前 `develop` 源码核对；安装包功能和版本以对应 Release 为准。不同版本可能存在功能差异，请同时查看对应 Release。
 
 ## 下载与版本
 

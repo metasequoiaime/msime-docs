@@ -1,6 +1,6 @@
 # macOS 使用指南
 
-水杉 macOS 版由兩部分組成：系統輸入源「水杉输入法」，以及負責安裝、設定和詞庫管理的設定應用程式 MSIME。目前發布的 DMG 是 universal 套件，Apple 晶片與 Intel Mac 通用，需要 macOS 13 及以上版本。本文按 2026-10-05 發布的 macos-v0.52.0 整理；其他版本的功能以對應 Release 為準。macOS 版由 [msime](https://github.com/metasequoiaime/msime) 儲存庫發布。iOS 版透過 TestFlight 公開連結測試分發，不能用 macOS 安裝套件安裝到 iPhone 或 iPad。
+水杉 macOS 版由兩部分組成：系統輸入源「水杉输入法」，以及負責安裝、設定和詞庫管理的設定應用程式 MSIME。目前發布的 DMG 是 universal 套件，Apple 晶片與 Intel Mac 通用，需要 macOS 13 及以上版本。本文按 [msime](https://github.com/metasequoiaime/msime) 當前 `develop` 原始碼核對；安裝包功能和版本以對應 Release 為準。macOS 版由該儲存庫發布。iOS 版透過 TestFlight 公開連結測試分發，不能用 macOS 安裝套件安裝到 iPhone 或 iPad。
 
 本頁採用臺灣繁體中文用語；引號內的應用程式選項、程式碼、檔名與範例保留原文，方便對照實際介面。
 

@@ -1,6 +1,6 @@
 # iOS 使用指南
 
-水杉 iOS 版是一個系統鍵盤延伸功能，由鍵盤和同名的設定 App 組成，支援 iOS 17 及以上的 iPhone 和 iPad。它目前是測試版，透過 TestFlight 公開測試分發，尚未上架 App Store，原因見[常見問題](https://msime.app/zh-TW/faq/)裡的「iOS 版為什麼不在 App Store？」。本文按 [msime](https://github.com/metasequoiaime/msime) 主儲存庫發布的 [ios-v0.51.5](https://github.com/metasequoiaime/msime/releases/tag/ios-v0.51.5) 整理；其他版本可能存在功能差異，請同時檢視對應 Release。
+水杉 iOS 版是一個系統鍵盤延伸功能，由鍵盤和同名的設定 App 組成，支援 iOS 17 及以上的 iPhone 和 iPad。它目前是測試版，透過 TestFlight 公開測試分發，尚未上架 App Store，原因見[常見問題](https://msime.app/zh-TW/faq/)裡的「iOS 版為什麼不在 App Store？」。本文按 [msime](https://github.com/metasequoiaime/msime) 當前 `develop` 原始碼核對；安裝包功能和版本以對應 Release 為準。不同版本可能存在功能差異，請同時檢視對應 Release。
 
 ## 安裝與更新
 
