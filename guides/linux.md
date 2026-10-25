@@ -45,6 +45,20 @@ msime-linux-setup --download
 
 如果在首次配置之前就选中了水杉，Fcitx5 会在输入面板上提示先完成首次配置，IBus 下会打开设置窗口或发出桌面通知引导配置。
 
+## 命令行与 MCP
+
+完整版 `.deb`、`.rpm`、归档和发行版包会把 `msime-mcp` 安装到 `/usr/bin`，并提供 `msime` 符号链接；Nix 包当前不带这两个入口。可用下面的命令查询当前方案的本地候选：
+
+```sh
+msime expand nihao --json
+printf 'nihao\nzhongguo\n' | msime expand - --json
+msime config get scheme
+```
+
+`expand` 不访问云候选、AI 服务或前文上下文。`msime session` 以 JSONL 驱动独立的完整 Host API 会话，返回候选、光标和提交文本，适合测试输入引擎；它不会连接已经在编辑器中运行的那条会话。
+
+不带子命令运行 `msime-mcp` 会通过 stdio 提供 MCP 服务；也可用 `msime-mcp tools` 查看工具，或用 `msime-mcp call lookup_candidates '{"code":"nihao"}'` 调用工具。读取用户词库必须显式使用 `--allow-dictionary-read`，修改偏好、快捷短语和皮肤必须显式使用 `--allow-write`。完整请求和助手配置见[命令行与 MCP](cli-mcp.md)。
+
 ## 输入与快捷键
 
 | 操作 | 方法 |

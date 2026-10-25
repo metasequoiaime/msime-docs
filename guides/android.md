@@ -83,6 +83,10 @@
 - **换皮肤**：点键盘工具栏上的衣架图标，或在「设置 → 皮肤」里选择。
 - **隐私**：键盘默认离线，只有使用云候选、AI、语音、账号同步等功能时才联网，详见 [PRIVACY.md](https://github.com/metasequoiaime/msime/blob/develop/PRIVACY.md)。
 
+## 桌面 CLI 与 MCP
+
+Android 发布 APK 是原生输入法宿主，不包含桌面版的 `msime`、`msime-mcp` 或 MCP stdio 服务。需要查询候选、驱动测试会话或连接 AI 助手时，请在安装了 macOS、Linux 或 Windows 桌面版的电脑上使用对应的 CLI；Android 的设置和输入数据不会自动提供给桌面 CLI。桌面命令与权限说明见[命令行与 MCP](cli-mcp.md)。
+
 ## 反馈问题
 
 在应用的「我的 → 帮助与反馈」里提交，可以附上截图和诊断信息；也可以先搜索 [msime Issues](https://github.com/metasequoiaime/msime/issues)，没有相同问题时再新建，并写明手机型号、Android 版本和水杉版本。
