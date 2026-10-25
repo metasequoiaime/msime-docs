@@ -23,6 +23,7 @@
 | HarmonyOS | [HarmonyOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/harmony/README.md) | 开发中，尚未发布安装包 |
 | 跨平台 | [从其他输入法迁移](guides/migration.md) | 搜狗、微软拼音、Rime 的用户词库怎么带过来；导入格式按 Windows 版核对，另列 macOS、Linux、Android 与 iOS 的导入入口 |
 | 跨平台 | [无障碍现状](guides/accessibility.md) | 屏幕阅读器支持的实际状况与可参与的方向 |
+| 跨平台 | [命令行与 MCP](guides/cli-mcp.md) | 用 `msime` 查询候选、驱动完整会话，以及配置 MCP |
 
 Windows、macOS、macOS 语音、Linux、Android 与 iOS 指南及常见问题（含繁體译文）是官网对应正文的唯一来源。修改用户说明请在本仓提交，msime-web 通过固定的 Docs 子模块渲染；构建/API 说明仍由各代码仓库维护。指南按已提交源码核对，具体安装版本可能有所不同，请结合 Release 阅读。
 
