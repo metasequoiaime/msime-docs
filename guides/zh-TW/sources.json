@@ -3,12 +3,12 @@
   "files": {
     "windows.md": {
       "source": "guides/windows.md",
-      "sourceSha256": "dedd01e299f7810796d09939aa26c328b59ec2bbd50ab599c41810f25a454d64",
+      "sourceSha256": "ab794594164213899d45cb6b9e0be4fa703d16bbe1f49ab3639df0fe6264a471",
       "translation": "guides/zh-TW/windows.md"
     },
     "macos.md": {
       "source": "guides/macos.md",
-      "sourceSha256": "16582e28f1553ecafd84af3828121285224dc6cee0ccc00e31e68f7dfc014bda",
+      "sourceSha256": "4ec84042632c949e127c8cd2e26d31d093b1c6ebc1d5340f9d696172243584fd",
       "translation": "guides/zh-TW/macos.md"
     },
     "macos-voice.md": {
@@ -18,17 +18,17 @@
     },
     "linux.md": {
       "source": "guides/linux.md",
-      "sourceSha256": "b5bc8c3e719f84aad5625ccd539e16ec59a6303b6bc14508b91fdd83be553205",
+      "sourceSha256": "cdc528c9eb01a2c301f5c9a52493631cfe69d7eb5708455f0205f8d9790ce1ce",
       "translation": "guides/zh-TW/linux.md"
     },
     "android.md": {
       "source": "guides/android.md",
-      "sourceSha256": "d10c476b01c171a46620c56e4a01b71ea2b58ed03debb877a784feeeefd4dadc",
+      "sourceSha256": "08c080eb572ac9cdeaa7852d77202aecfff73bfbc4146df02d10b62a79639440",
       "translation": "guides/zh-TW/android.md"
     },
     "ios.md": {
       "source": "guides/ios.md",
-      "sourceSha256": "c5ee974202c5502b84cd2497ed96a785a639fce95f16afc52cd4841b190f78fd",
+      "sourceSha256": "e08a5c8ff389c09ed01dd80623a0c9caa7367527cacd070252a34a5953e9d7f6",
       "translation": "guides/zh-TW/ios.md"
     },
     "migration.md": {
