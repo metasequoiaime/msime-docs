@@ -80,6 +80,28 @@
 
 手寫輸入的設定在「设置 → 手写输入」。手寫第一次使用時需要連網下載辨識模型，之後在裝置上辨識。
 
+### 不連網安裝本機語音
+
+本機辨識需要兩樣東西：「本地语音运行库」和至少一個本機模型。完整版和水杉拼音的安裝包不帶執行庫，要另外準備；其他版本的安裝包自帶執行庫，只需準備模型。兩樣都可以在應用程式裡直接下載；網路慢或一直下載失敗時，可以先用手機瀏覽器或電腦把檔案下載好（電腦上下載的要先傳到手機裡），再在應用程式裡從檔案匯入。0.4.1 起的版本支援從檔案匯入，以下按 0.6.0 的介面說明。
+
+1. 在「设置 → 语音输入」的「识别」分頁開啟「离线识别」，或者在「服务」分頁把辨識服務選成「本地模型」。之後「服务」分頁裡會出現「本地识别准备」和「本地模型」兩組。開啟離線辨識或選用本機模型時，應用程式會自動開始下載執行庫。
+2. 匯入執行庫：在「本地识别准备」裡點「从文件导入运行库」。執行庫正在下載時這一項不會顯示，先在「本地语音运行库」那一行點「取消」；執行庫顯示「已就绪」時也不會顯示，不需要再匯入。
+3. 匯入模型：在「本地模型」裡點「从文件导入」，再選一個還沒裝好的模型。正在下載的模型不在這個清單裡，要先在它那一行點「取消」。
+4. 對話框會列出這一項要下載的檔案和大小，點「下载地址」可以直接用瀏覽器開啟。檔案都下載好後點「选择文件」，把它們一起選上。應用程式按長度和內容（SHA-256）辨認檔案，改了檔名也沒關係；檔案不完整或不對時什麼都不會安裝。
+
+目前版本需要的檔案如下，都是 sherpa-onnx 專案在 GitHub Release 上發布的原始檔案。模型只需安裝要用的那一個：
+
+| 用途 | 要下載的檔案 | 大小 |
+| --- | --- | --- |
+| 本機語音執行庫 | [sherpa-onnx-1.13.8.aar](https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.8/sherpa-onnx-1.13.8.aar) | 50.1 MB |
+| 中英流式 | [sherpa-onnx-x-asr-480ms-streaming-zipformer-transducer-zh-en-punct-int8-2026-06-05.tar.bz2](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-x-asr-480ms-streaming-zipformer-transducer-zh-en-punct-int8-2026-06-05.tar.bz2) | 133.9 MB |
+| 中英整句 | [sherpa-onnx-x-asr-zipformer-transducer-zh-en-punct-int8-2026-06-03.tar.bz2](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-x-asr-zipformer-transducer-zh-en-punct-int8-2026-06-03.tar.bz2) 和 [silero_vad.onnx](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx) | 136.4 MB + 0.6 MB |
+| 快速整句 | [sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2) 和 [silero_vad.onnx](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx) | 163.0 MB + 0.6 MB |
+
+- 執行庫匯入的是整個 `.aar` 檔案，模型匯入的是 `.tar.bz2` 壓縮檔本身，都不要解壓縮。
+- 中英整句和快速整句用的是同一個 `silero_vad.onnx`，下載一次就夠，兩個模型匯入時都選它。
+- 檔名和版本會隨水杉的版本更新。權威清單是 msime 儲存庫 `develop` 分支上的 [voice-runtime.lock.json](https://github.com/metasequoiaime/msime/blob/develop/resources/voice-runtime.lock.json)（`platforms.android` 一項）和 [local-asr-models.json](https://github.com/metasequoiaime/msime/blob/develop/resources/local-asr-models.json)（每個模型的 `archive`，以及 `extra` 裡帶 `url` 的檔案；標了 `desktop_only` 的模型只在電腦上提供），裡面也寫了每個檔案的 SHA-256。`develop` 可能比你安裝的版本新，和應用程式對話框裡列的檔案不一致時，以對話框為準。
+
 ## 常用操作
 
 - **選擇候選字**：點候選欄裡的詞送出；候選字多於一行時，點右端的箭頭展開整頁。
