@@ -15,12 +15,12 @@
 
 | 平台 | 阅读入口 | 范围 |
 | --- | --- | --- |
-| Windows 10 / 11 | [Windows 使用指南](guides/windows.md) | 安装、设置、输入模式、词库导入导出、语音和排障；对应 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 发布的正式版。[msime](https://github.com/metasequoiaime/msime/releases) 另以预发布（`windows-v*`）提供新版，区别见[常见问题](guides/faq.md#windows-上的metasequoia-ime-水杉输入法和水杉输入法有什么区别) |
-| macOS 13+ | [macOS 使用指南](guides/macos.md) · [语音输入](guides/macos-voice.md) | 安装、原生设置、快捷键、数据与卸载；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布 |
-| Linux / Fcitx5 / IBus | [Linux 使用指南](guides/linux.md) | 安装与首次配置、设置、桌面工具、语音输入与排障；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布，同一个安装包提供 Fcitx5 与 IBus 两个入口 |
-| iOS 17+ | [iOS 使用指南](guides/ios.md) · [下载页](https://msime.app/download/) | 安装与更新、启用键盘、输入方案与辅助码、皮肤、词库导入和反馈；键盘扩展，通过 TestFlight 公开测试分发，尚未上架 App Store |
+| Windows 10 / 11 | [Windows 使用指南](guides/windows.md) | 安装、设置、输入模式、词库导入导出、语音、CLI/MCP 和排障；对应 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 发布的正式版。[msime](https://github.com/metasequoiaime/msime/releases) 另以预发布（`windows-v*`）提供新版，区别见[常见问题](guides/faq.md#windows-上的metasequoia-ime-水杉输入法和水杉输入法有什么区别) |
+| macOS 13+ | [macOS 使用指南](guides/macos.md) · [语音输入](guides/macos-voice.md) | 安装、原生设置、快捷键、CLI/MCP、数据与卸载；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布 |
+| Linux / Fcitx5 / IBus | [Linux 使用指南](guides/linux.md) | 安装与首次配置、设置、桌面工具、CLI/MCP、语音输入与排障；在 [msime](https://github.com/metasequoiaime/msime/releases) 发布，同一个安装包提供 Fcitx5 与 IBus 两个入口 |
+| iOS 17+ | [iOS 使用指南](guides/ios.md) · [下载页](https://msime.app/download/) | 安装与更新、启用键盘、输入方案与辅助码、皮肤、词库导入和反馈；键盘扩展，通过 TestFlight 公开测试分发，尚未上架 App Store；不含桌面 CLI/MCP |
 | Android 9+ | [Android 使用指南](guides/android.md) · [下载页](https://msime.app/download/) | 下载与版本、启用键盘、升级、中英文切换、9 键与 26 键、浮动键盘、外接键盘和语音；测试版，APK 通过[蒲公英](https://www.pgyer.com/msime)分发并在 [msime](https://github.com/metasequoiaime/msime/releases) 以 `android-v*` 发布，尚未上架应用商店 |
-| HarmonyOS | [HarmonyOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/harmony/README.md) | 开发中，尚未发布安装包 |
+| HarmonyOS | [HarmonyOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/harmony/README.md) | 开发中，尚未发布安装包，也不提供桌面 CLI/MCP |
 | 跨平台 | [从其他输入法迁移](guides/migration.md) | 搜狗、微软拼音、Rime 的用户词库怎么带过来；导入格式按 Windows 版核对，另列 macOS、Linux、Android 与 iOS 的导入入口 |
 | 跨平台 | [无障碍现状](guides/accessibility.md) | 屏幕阅读器支持的实际状况与可参与的方向 |
 | 跨平台 | [命令行与 MCP](guides/cli-mcp.md) | 用 `msime` 查询候选、驱动完整会话，以及配置 MCP |

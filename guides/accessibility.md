@@ -2,7 +2,7 @@
 
 输入法决定屏幕阅读器用户能不能打字，所以「现在做到了什么、没做到什么」应该有一份可查的说明，而不是让人装完才发现。
 
-**这是一份现状说明，不是承诺。** 下面每一条都对着源码核对过，包括对本项目不利的部分。按 2026-10-01 的源码整理：Windows 对应 [msime-windows](https://github.com/metasequoiaime/msime-windows) 的 v0.9.3 发布版，macOS 对应 [msime](https://github.com/metasequoiaime/msime) 的 v0.50.0-build.9 发布版，iOS 对应 TestFlight 测试版 ios-v0.50.0-build.14，Linux 对应已归档的 msime-linux 仓库发布的 v0.8.2。
+**这是一份现状说明，不是承诺。** 下面每一条都对着当前源码核对过，包括对本项目不利的部分：Windows 参考 [msime-windows](https://github.com/metasequoiaime/msime-windows)，macOS、iOS、Linux 参考 [msime](https://github.com/metasequoiaime/msime) 的 `develop`。实际安装包可能早于当前源码，遇到差异请以对应 Release 为准。
 
 ## 一句话
 

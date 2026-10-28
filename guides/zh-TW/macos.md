@@ -1,6 +1,6 @@
 # macOS 使用指南
 
-水杉 macOS 版由兩部分組成：系統輸入源「水杉输入法」，以及負責安裝、設定和詞庫管理的設定應用程式 MSIME。目前發布的 DMG 是 universal 套件，Apple 晶片與 Intel Mac 通用，需要 macOS 13 及以上版本。本文按 2026-10-05 發布的 macos-v0.52.0 整理；其他版本的功能以對應 Release 為準。macOS 版由 [msime](https://github.com/metasequoiaime/msime) 儲存庫發布。iOS 版透過 TestFlight 公開連結測試分發，不能用 macOS 安裝套件安裝到 iPhone 或 iPad。
+水杉 macOS 版由兩部分組成：系統輸入源「水杉输入法」，以及負責安裝、設定和詞庫管理的設定應用程式 MSIME。目前發布的 DMG 是 universal 套件，Apple 晶片與 Intel Mac 通用，需要 macOS 13 及以上版本。本文按 [msime](https://github.com/metasequoiaime/msime) 當前 `develop` 原始碼核對；安裝包功能和版本以對應 Release 為準。macOS 版由該儲存庫發布。iOS 版透過 TestFlight 公開連結測試分發，不能用 macOS 安裝套件安裝到 iPhone 或 iPad。
 
 本頁採用臺灣繁體中文用語；引號內的應用程式選項、程式碼、檔名與範例保留原文，方便對照實際介面。
 
@@ -23,6 +23,22 @@ brew install --cask metasequoiaime/tap/msime
 ```
 
 其他版本的 cask 是 `msime-wubi`、`msime-pinyin`、`msime-japanese`、`msime-vietnamese` 和 `msime-tibetan`。裝完仍要按上面第 3 步開啟一次應用程式並點「立即安装」。完整版的 cask 還會把 `msime-mcp` 放進 `PATH`，供在終端機裡配置的 AI 助理使用。
+
+## 命令列與 MCP
+
+完整版安裝包中的 `msime-mcp` 同時提供 `msime` 命令：
+
+```sh
+msime expand nihao --json
+printf 'nihao\nzhongguo\n' | msime expand - --json
+msime config get scheme
+```
+
+`expand` 只查詢本地詞典候選；`msime session` 以 JSONL 驅動獨立的完整 Host API 會話。執行 `msime-mcp tools`、`msime-mcp call <tool> '<json>'` 或 `msime-mcp prompt diagnose` 可操作 MCP。讀取使用者詞庫和修改設定分別受 `--allow-dictionary-read`、`--allow-write` 控制。完整說明見[命令列與 MCP](../cli-mcp.md)。
+
+```sh
+printf '%s\n' '{"op":"text","value":"nihao"}' '{"op":"command","value":"finish"}' | msime session
+```
 
 ## 常用操作
 

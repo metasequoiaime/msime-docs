@@ -1,6 +1,6 @@
 # iOS 使用指南
 
-水杉 iOS 版是一個系統鍵盤延伸功能，由鍵盤和同名的設定 App 組成，支援 iOS 17 及以上的 iPhone 和 iPad。它目前是測試版，透過 TestFlight 公開測試分發，尚未上架 App Store，原因見[常見問題](https://msime.app/zh-TW/faq/)裡的「iOS 版為什麼不在 App Store？」。本文按 [msime](https://github.com/metasequoiaime/msime) 主儲存庫發布的 [ios-v0.51.5](https://github.com/metasequoiaime/msime/releases/tag/ios-v0.51.5) 整理；其他版本可能存在功能差異，請同時檢視對應 Release。
+水杉 iOS 版是一個系統鍵盤延伸功能，由鍵盤和同名的設定 App 組成，支援 iOS 17 及以上的 iPhone 和 iPad。它目前是測試版，透過 TestFlight 公開測試分發，尚未上架 App Store，原因見[常見問題](https://msime.app/zh-TW/faq/)裡的「iOS 版為什麼不在 App Store？」。本文按 [msime](https://github.com/metasequoiaime/msime) 當前 `develop` 原始碼核對；安裝包功能和版本以對應 Release 為準。不同版本可能存在功能差異，請同時檢視對應 Release。
 
 ## 安裝與更新
 
@@ -45,6 +45,10 @@ App 的「我的 → 帮助与反馈 → 使用帮助」裡有「打开系统键
 鍵盤預設離線，不開啟「允许完全访问」也可以正常打字。打字統計、手寫第一次下載辨識模型和診斷日誌需要它，需要時到「設定 → 一般 → 鍵盤 → 鍵盤 → 水杉输入法」裡開啟。哪些功能需要完全取用，見[常見問題](https://msime.app/zh-TW/faq/)裡的「iOS 鍵盤要不要開啟「允许完全访问」？」。
 
 雲端詞庫、佈景主題社群這些功能要連網並登入水杉帳號，帳號狀態在「我的」裡檢視。登入後「我的」裡會出現「设置同步」和「云词库」：「设置同步」可以上傳本機設定或下載並套用雲端設定，範圍是輸入方案、簡繁體、鍵盤聲音與觸感、詞庫學習開關和佈景主題，憑證、連網授權和輸入內容不會隨設定上傳。
+
+## 桌面 CLI 與 MCP
+
+iOS 鍵盤擴充功能和設定 App 不包含桌面版的 `msime`、`msime-mcp` 或 MCP stdio 服務。CLI/MCP 僅隨 macOS、Linux、Windows 桌面安裝包提供；需要測試候選或連線 AI 助手時，請在桌面版執行對應命令。桌面命令說明見[命令列與 MCP](../cli-mcp.md)。
 
 ## 回報問題
 

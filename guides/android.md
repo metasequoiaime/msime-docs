@@ -1,6 +1,6 @@
 # Android 使用指南
 
-水杉 Android 版是一个系统输入法，由键盘和同名的设置应用组成，支持 Android 9 及以上版本，目前是测试版，尚未上架应用商店。本文按 [msime](https://github.com/metasequoiaime/msime) 主仓发布的 [android-v0.3.1](https://github.com/metasequoiaime/msime/releases/tag/android-v0.3.1) 整理；其他版本可能存在功能差异，请同时查看对应 Release。
+水杉 Android 版是一个系统输入法，由键盘和同名的设置应用组成，支持 Android 9 及以上版本，目前是测试版，尚未上架应用商店。本文按 [msime](https://github.com/metasequoiaime/msime) 当前 `develop` 源码核对；安装包功能和版本以对应 Release 为准。不同版本可能存在功能差异，请同时查看对应 Release。
 
 ## 下载与版本
 
@@ -86,6 +86,10 @@
 - **删除**：按住删除键会逐渐加速连删；按住后往上滑，键上方会出现「快速删除」框，滑进框里松手会删掉光标前的全部文字，滑回框外再松手则什么也不删。
 - **换皮肤**：点键盘工具栏上的衣架图标，或在「设置 → 皮肤」里选择。
 - **隐私**：键盘默认离线，只有使用云候选、AI、语音、账号同步等功能时才联网，详见 [PRIVACY.md](https://github.com/metasequoiaime/msime/blob/develop/PRIVACY.md)。
+
+## 桌面 CLI 与 MCP
+
+Android 发布 APK 是原生输入法宿主，不包含桌面版的 `msime`、`msime-mcp` 或 MCP stdio 服务。需要查询候选、驱动测试会话或连接 AI 助手时，请在安装了 macOS、Linux 或 Windows 桌面版的电脑上使用对应的 CLI；Android 的设置和输入数据不会自动提供给桌面 CLI。桌面命令与权限说明见[命令行与 MCP](cli-mcp.md)。
 
 ## 反馈问题
 

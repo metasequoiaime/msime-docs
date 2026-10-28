@@ -1,6 +1,6 @@
 # iOS 使用指南
 
-水杉 iOS 版是一个系统键盘扩展，由键盘和同名的设置 App 组成，支持 iOS 17 及以上的 iPhone 和 iPad。它目前是测试版，通过 TestFlight 公开测试分发，尚未上架 App Store，原因见[常见问题](https://msime.app/faq/)里的「iOS 版为什么不在 App Store？」。本文按 [msime](https://github.com/metasequoiaime/msime) 主仓发布的 [ios-v0.51.5](https://github.com/metasequoiaime/msime/releases/tag/ios-v0.51.5) 整理；其他版本可能存在功能差异，请同时查看对应 Release。
+水杉 iOS 版是一个系统键盘扩展，由键盘和同名的设置 App 组成，支持 iOS 17 及以上的 iPhone 和 iPad。它目前是测试版，通过 TestFlight 公开测试分发，尚未上架 App Store，原因见[常见问题](https://msime.app/faq/)里的「iOS 版为什么不在 App Store？」。本文按 [msime](https://github.com/metasequoiaime/msime) 当前 `develop` 源码核对；安装包功能和版本以对应 Release 为准。不同版本可能存在功能差异，请同时查看对应 Release。
 
 ## 安装与更新
 
@@ -45,6 +45,10 @@ App 的「我的 → 帮助与反馈 → 使用帮助」里有「打开系统键
 键盘默认离线，不打开「允许完全访问」也可以正常打字。打字统计、手写第一次下载识别模型和诊断日志需要它，需要时到「设置 → 通用 → 键盘 → 键盘 → 水杉输入法」里打开。哪些功能需要完全访问，见[常见问题](https://msime.app/faq/)里的「iOS 键盘要不要打开「允许完全访问」？」。
 
 云词库、皮肤社区这些功能要联网并登录水杉账号，账号状态在「我的」里查看。登录后「我的」里会出现「设置同步」和「云词库」：「设置同步」可以上传本机设置或下载并应用云端设置，范围是输入方案、简繁体、键盘声音与触感、词库学习开关和皮肤，凭据、联网授权和输入内容不会随设置上传。
+
+## 桌面 CLI 与 MCP
+
+iOS 键盘扩展和设置 App 不包含桌面版的 `msime`、`msime-mcp` 或 MCP stdio 服务。CLI/MCP 仅随 macOS、Linux、Windows 桌面安装包提供；需要测试候选或连接 AI 助手时，请在桌面版上运行对应命令。桌面命令与权限说明见[命令行与 MCP](cli-mcp.md)。
 
 ## 反馈问题
 

@@ -2,7 +2,7 @@
 
 水杉输入法（Metasequoia IME）是一款面向 Windows 10、Windows 11 的开源中文输入法，采用纯 TSF 方案。目前支持全拼、双拼、86 五笔和日语罗马音输入，也提供辅助码、云候选、AI 联想、语音输入、手写输入和快捷短语等功能。
 
-本文按 2026-10-01 核对的 Windows 源码（v0.9.3）整理。安装包可能早于源码，找不到某个选项时请先查看该版本的发布说明。
+本文按 [msime](https://github.com/metasequoiaime/msime) 当前 `develop` 源码核对；Windows 正式版来自独立的 [msime-windows](https://github.com/metasequoiaime/msime-windows) 发布线。安装包可能早于源码，找不到某个选项时请先查看对应 Release 的发布说明。
 
 ## 下载安装
 
@@ -32,6 +32,20 @@
 ## 开始输入
 
 在记事本等文本框中切换到水杉，确认处于中文状态和全拼方案，输入 `nihao`，按空格选择高亮候选；也可按候选前的数字选择。`Esc` 取消，`Enter` 提交原始字母串。通过输入法右键菜单或悬浮工具栏的设置入口调整方案。
+
+## 命令行与 MCP
+
+现代 Windows 设置中的「连接 AI 助手」页可以把本机 `msime-mcp.exe` 注册给 Claude Desktop、Cursor 等客户端，并显示当前已授予的权限。Windows 安装包把它放在输入法安装目录的 `server` 子目录；设置页写入配置前会先读取现有配置，不能读取时不会覆盖文件。
+
+在终端中也可以直接运行它。安装目录因版本或自定义路径不同而变化时，请从设置页的「命令行」说明复制实际路径：
+
+```powershell
+msime-mcp.exe expand nihao --json
+```
+
+`expand` 读取当前方案的本地候选；`msime-mcp tools` 列出 MCP 工具，`msime-mcp call lookup_candidates '{"code":"nihao"}'` 调用同一套候选工具。读取用户词库或修改设置时，必须在助手配置中明确授予 `--allow-dictionary-read` 或 `--allow-write`。
+
+完整的 JSONL 会话接口是 `msime-mcp.exe session`：它在当前运行时选项下创建独立会话，按行接收 `character`、`text`、`command`、`select` 和 `focus` 请求，按行返回候选、光标和上屏结果。它不会接管已经打开的编辑器会话，适合 demo 与回归脚本。完整请求字段见[命令行与 MCP](cli-mcp.md)。
 
 ## 设置窗口
 

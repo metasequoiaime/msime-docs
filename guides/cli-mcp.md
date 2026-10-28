@@ -74,4 +74,8 @@ msime-mcp prompt diagnose
 
 默认只提供只读工具。`--allow-write` 才会提供偏好、快捷短语和皮肤的修改工具；`--allow-dictionary-read` 才会提供读取用户词库的工具。两个开关都必须由用户在设置页授权后写进助手配置，不要把凭据或真实输入放进命令行参数、脚本和日志。
 
+## 其他平台
+
+Android 和 iOS 的发布包是原生移动端输入法，不包含桌面 CLI、`msime-mcp` 或 MCP stdio 服务；HarmonyOS 当前仍是开发中的宿主，也没有可供用户安装的 CLI/MCP 包。需要使用这些接口时，请安装 macOS、Linux 或 Windows 桌面版，并以对应平台指南中的安装路径为准。
+
 更多参数可运行 `msime --help` 或 `msime-mcp --help` 查看。

@@ -1,6 +1,6 @@
 # Linux 使用指南
 
-水杉 Linux 版的同一个安装包同时提供 Fcitx5 插件和 IBus 引擎，两者共用同一套引擎与设置，支持全拼、双拼、五笔、日语、韩语、粤拼、注音、越南文和藏文等方案，并带有设置窗口、手写、屏幕键盘、剪贴板历史和语音输入。本文按 [msime](https://github.com/metasequoiaime/msime) 主仓发布的 [linux-v0.11.0](https://github.com/metasequoiaime/msime/releases/tag/linux-v0.11.0) 整理；其他版本可能存在功能差异，请同时查看对应 Release。
+水杉 Linux 版的同一个安装包同时提供 Fcitx5 插件和 IBus 引擎，两者共用同一套引擎与设置，支持全拼、双拼、五笔、日语、韩语、粤拼、注音、越南文和藏文等方案，并带有设置窗口、手写、屏幕键盘、剪贴板历史和语音输入。本文按 [msime](https://github.com/metasequoiaime/msime) 当前 `develop` 源码核对；安装包功能和版本以对应 Release 为准。不同版本可能存在功能差异，请同时查看对应 Release。
 
 已归档的 [msime-linux](https://github.com/metasequoiaime/msime-linux) 仓库（v0.8.2 及更早，仅 IBus）不再更新，它的包名、设置程序和配置文件位置都与本文不同，本文不适用于它。
 
@@ -44,6 +44,20 @@ msime-linux-setup --download
 配置完成后会把水杉加入正在运行的输入法框架的列表，两者都在运行时以 Fcitx5 为准：Fcitx5 中显示为「水杉输入法」（英文界面为「MSIME」），IBus 与 GNOME 输入源中显示为「Metasequoia 水杉输入法」。自动加入失败时，输出会说明原因和手动步骤：Fcitx5 用 `fcitx5-configtool` 把「水杉输入法」加入当前输入法组；IBus 先执行 `ibus restart`，再在桌面输入源里添加「Metasequoia 水杉输入法」。切换过去后在文本框输入 `nihao`，按空格上屏。
 
 如果在首次配置之前就选中了水杉，Fcitx5 会在输入面板上提示先完成首次配置，IBus 下会打开设置窗口或发出桌面通知引导配置。
+
+## 命令行与 MCP
+
+完整版 `.deb`、`.rpm`、归档和发行版包会把 `msime-mcp` 安装到 `/usr/bin`，并提供 `msime` 符号链接；Nix 包当前不带这两个入口。可用下面的命令查询当前方案的本地候选：
+
+```sh
+msime expand nihao --json
+printf 'nihao\nzhongguo\n' | msime expand - --json
+msime config get scheme
+```
+
+`expand` 不访问云候选、AI 服务或前文上下文。`msime session` 以 JSONL 驱动独立的完整 Host API 会话，返回候选、光标和提交文本，适合测试输入引擎；它不会连接已经在编辑器中运行的那条会话。
+
+不带子命令运行 `msime-mcp` 会通过 stdio 提供 MCP 服务；也可用 `msime-mcp tools` 查看工具，或用 `msime-mcp call lookup_candidates '{"code":"nihao"}'` 调用工具。读取用户词库必须显式使用 `--allow-dictionary-read`，修改偏好、快捷短语和皮肤必须显式使用 `--allow-write`。完整请求和助手配置见[命令行与 MCP](cli-mcp.md)。
 
 ## 输入与快捷键
 
