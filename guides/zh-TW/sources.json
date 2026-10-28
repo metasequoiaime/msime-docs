@@ -3,7 +3,7 @@
   "files": {
     "windows.md": {
       "source": "guides/windows.md",
-      "sourceSha256": "777296d62006b329a5c1b8afeb34388c10604ced08ba47266a5d01d59f6e6a2e",
+      "sourceSha256": "850d7642dcbd0d11973a57f0c7443c47abe83b73886699e6dc5cd0b04df2cc91",
       "translation": "guides/zh-TW/windows.md"
     },
     "macos.md": {
