@@ -39,13 +39,15 @@
 
 現代 Windows 設定中的「連線 AI 助手」頁面可以把本機 `msime-mcp.exe` 註冊給 Claude Desktop、Cursor 等用戶端，並顯示目前已授予的權限。Windows 安裝包會將它放在輸入法安裝目錄的 `server` 子目錄。
 
-也可以直接在終端機執行：
+也可以直接在終端機執行。安裝目錄會因版本或自訂路徑而不同，請從設定頁的「命令行」說明複製實際路徑：
 
 ```powershell
 msime-mcp.exe expand nihao --json
 ```
 
-`expand` 讀取目前方案的本地候選；`msime-mcp tools` 可列出 MCP 工具，`msime-mcp call lookup_candidates '{"code":"nihao"}'` 可呼叫候選工具。讀取使用者詞庫或修改設定時，必須明確授予 `--allow-dictionary-read` 或 `--allow-write`。完整 JSONL 會話介面與權限說明見[命令列與 MCP](../cli-mcp.md)。
+`expand` 讀取目前方案的本地候選；`msime-mcp tools` 可列出 MCP 工具，`msime-mcp call lookup_candidates '{"code":"nihao"}'` 可呼叫同一套候選工具。讀取使用者詞庫或修改設定時，必須在助手設定中明確授予 `--allow-dictionary-read` 或 `--allow-write`。
+
+完整的 JSONL 會話介面是 `msime-mcp.exe session`：它在目前的執行階段選項下建立獨立會話，逐行接收 `character`、`text`、`command`、`select` 和 `focus` 請求，逐行回傳候選、游標和送出結果。它不會接管已經開啟的編輯器會話，適合示範與回歸測試腳本。完整請求欄位見[命令列與 MCP](../cli-mcp.md)。
 
 ## 設定視窗
 
