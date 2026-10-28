@@ -83,6 +83,8 @@ msime config get scheme
 
 「输入」页可以调整中英文默认状态、选词与翻页、云候选、中英混输、快捷模式、模糊音、辅助码和调频。全拼与双拼的辅助码默认开启，分别默认使用自然码和蓝天小雨点，另可选首右2.0、首右plus、小鹤和加加。模糊音默认关闭，首次开启时一次选中全部 11 条规则，可再删减。调频可选关闭、一次置顶、折半调频、线性调频或一次置前（默认）。
 
+同一页「候选与联想」一组里的「桌面神经联想」默认关闭。打开后，输入停顿时会用开源的 chinese-ime-lm 整句重排模型结合前文，在整句候选里重新挑选首选；第一次打开时下载约 25 MB 的模型，只用于拼音方案。它做什么、实测效果与代价见官网的[神经联想](https://msime.app/model/)页。
+
 Fcitx5 的中英文、简繁、工具栏等入口挂在输入法状态区，需要桌面提供托盘；以 `fcitx5 --disable notificationitem` 启动的发行版（例如 Omarchy）看不到这些入口，但输入不受影响，设置仍可从应用列表打开。Omarchy 上的主题同步、状态栏插件和 Hyprland 规则见 [Omarchy 说明](https://github.com/metasequoiaime/msime/blob/linux-v0.11.0/platforms/linux/README.md#omarchy)。
 
 ## 快捷模式与混合候选
