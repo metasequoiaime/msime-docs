@@ -80,6 +80,28 @@
 
 手写输入的设置在「设置 → 手写输入」。手写第一次使用时需要联网下载识别模型，之后在设备上识别。
 
+### 不联网安装本地语音
+
+本地识别要两样东西：「本地语音运行库」和至少一个本地模型。完整版和水杉拼音的安装包不带运行库，要另外准备；其他版本的安装包自带运行库，只需准备模型。两样都可以在应用里直接下载；网络慢或总是下载失败时，可以先用手机浏览器或电脑把文件下好（电脑上下的要先传到手机里），再在应用里从文件导入。0.4.1 起的版本支持从文件导入，下面按 0.6.0 的界面说明。
+
+1. 在「设置 → 语音输入」的「识别」分页打开「离线识别」，或者在「服务」分页把识别服务选成「本地模型」。之后「服务」分页里会出现「本地识别准备」和「本地模型」两组。打开离线识别或选用本地模型时，连着 Wi-Fi 等不按流量计费的网络会自动开始下载运行库；用移动数据时会先问「使用移动数据下载？」，点「取消」就不下载；没有网络时也不下载。
+2. 导入运行库：在「本地识别准备」里点「从文件导入运行库」。运行库正在下载时这一项不显示，先在「本地语音运行库」那一行点「取消」；运行库显示「已就绪」时也不显示，不需要再导入。
+3. 导入模型：在「本地模型」里点「从文件导入」，再选一个还没装好的模型。正在下载的模型不在这个列表里，要先在它那一行点「取消」。
+4. 弹窗会列出这一项要下载的文件和大小，点「下载地址」可以直接用浏览器打开。文件都下好后点「选择文件」，把它们一起选上。应用按长度和内容（SHA-256）认文件，改了文件名也没关系；文件不完整或不对时什么也不会装上。
+
+当前版本要的文件如下，都是 sherpa-onnx 项目在 GitHub Release 上发布的原始文件。模型只需装要用的那一个：
+
+| 用途 | 要下载的文件 | 大小 |
+| --- | --- | --- |
+| 本地语音运行库 | [sherpa-onnx-1.13.8.aar](https://github.com/k2-fsa/sherpa-onnx/releases/download/v1.13.8/sherpa-onnx-1.13.8.aar) | 50.1 MB |
+| 中英流式 | [sherpa-onnx-x-asr-480ms-streaming-zipformer-transducer-zh-en-punct-int8-2026-06-05.tar.bz2](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-x-asr-480ms-streaming-zipformer-transducer-zh-en-punct-int8-2026-06-05.tar.bz2) | 133.9 MB |
+| 中英整句 | [sherpa-onnx-x-asr-zipformer-transducer-zh-en-punct-int8-2026-06-03.tar.bz2](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-x-asr-zipformer-transducer-zh-en-punct-int8-2026-06-03.tar.bz2) 和 [silero_vad.onnx](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx) | 136.4 MB + 0.6 MB |
+| 快速整句 | [sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/sherpa-onnx-sense-voice-zh-en-ja-ko-yue-int8-2024-07-17.tar.bz2) 和 [silero_vad.onnx](https://github.com/k2-fsa/sherpa-onnx/releases/download/asr-models/silero_vad.onnx) | 163.0 MB + 0.6 MB |
+
+- 运行库导入的是整个 `.aar` 文件，模型导入的是 `.tar.bz2` 压缩包本身，都不要解压。
+- 中英整句和快速整句用的是同一个 `silero_vad.onnx`，下载一次就够，两个模型导入时都选它。
+- 文件名和版本会随水杉的版本更新。权威清单是 msime 仓库 `develop` 分支上的 [voice-runtime.lock.json](https://github.com/metasequoiaime/msime/blob/develop/resources/voice-runtime.lock.json)（`platforms.android` 一项）和 [local-asr-models.json](https://github.com/metasequoiaime/msime/blob/develop/resources/local-asr-models.json)（每个模型的 `archive`，以及 `extra` 里带 `url` 的文件；标了 `desktop_only` 的模型只在电脑上提供），里面也写了每个文件的 SHA-256。`develop` 可能比你装的版本新，和应用弹窗里列的文件不一致时，以弹窗为准。
+
 ## 常用操作
 
 - **选择候选**：点候选栏里的词上屏；候选多于一行时，点右端的箭头展开整页。
