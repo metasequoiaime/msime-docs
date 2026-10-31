@@ -121,6 +121,8 @@ TestFlight 連結提示“不接受新測試員”時，請稍後再試，或到
 
 ### Windows 上的「Metasequoia IME 水杉输入法」和「水杉输入法」有什麼區別？
 
+下載頁過去把這兩個入口寫成「純淨版」和「聯網版」，這個叫法容易誤解：它們不是離線版和聯網版的區別。官網現在改稱「正式版」和「新版預覽」。兩者都支援本機輸入，是否連網由雲端候選字、AI 聯想、線上翻譯、語音輸入和檢查更新等功能的設定決定；關閉這些功能後，一般本機輸入仍可使用。
+
 兩者是不同的產品，資料各自獨立：
 
 - **Metasequoia IME 水杉输入法**是目前的 Windows 正式版，由 [msime-windows](https://github.com/metasequoiaime/msime-windows/releases) 建置、簽章和發布，版本號以那裡的 Release 為準。[Windows 指南](https://msime.app/zh-TW/docs/windows/)和本頁的 Windows 排查都針對它。
