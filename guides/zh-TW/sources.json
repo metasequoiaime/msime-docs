@@ -28,7 +28,7 @@
     },
     "ios.md": {
       "source": "guides/ios.md",
-      "sourceSha256": "66977409c034c9ef850c7d6576fefa8aad61975ef610ae0faf3388c050f17592",
+      "sourceSha256": "a27c493f52d976fb8b0c054980c4920ec056b79e1a50557a3438deb87766ffdf",
       "translation": "guides/zh-TW/ios.md"
     },
     "migration.md": {
@@ -38,7 +38,7 @@
     },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "7c8e8769ae7f4c84a92db3480a53a50fb21eb1973d6b8333feaed6a07747e7ae",
+      "sourceSha256": "9ae62f3d32f6f47cb2b2bbf620bf5c3e4604a78f9562ac9e2c91252b311df59f",
       "translation": "guides/zh-TW/faq.md"
     }
   },
