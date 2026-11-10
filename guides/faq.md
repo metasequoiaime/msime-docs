@@ -111,6 +111,10 @@ TestFlight 链接提示“不接受新测试员”时，请稍后再试，或到
 
 依据：iOS v0.51.5 的 App 引导、帮助页与 [iOS 宿主说明](https://github.com/metasequoiaime/msime/blob/develop/platforms/ios/README.md)。
 
+### iOS 的剪贴板和常用语会自动分词吗？
+
+不会。剪贴板记录和常用语按原文插入，换行也会保留；它们不经过拼音引擎，不会拆成候选词或逐词转换。需要分词或重新组句时，请把文字粘贴到输入框后自行编辑。
+
 ### iPad 上切换到水杉后，马上又跳回原来的键盘？
 
 这是 iPadOS 27 上的已知问题，还在排查（[#6685](https://github.com/metasequoiaime/msime/issues/6685)）。从诊断日志看，键盘扩展刚加载就被系统结束，系统随即退回上一个键盘，并不是没装好或设置不对。v0.51.5 之后的下一个 iOS 版本会在诊断日志里加上内存读数，发布后请复现一次，在 App 里打开诊断日志并把记录贴到这个 issue 里；如果「设置 → 隐私与安全性 → 分析与改进 → 分析数据」里有名字以 `JetsamEvent` 或 `MSIMEKeyboardExtension` 开头、时间对得上的条目，也请一起附上，同时写明 iPad 型号、是否开着台前调度和用的输入方案。
@@ -238,6 +242,10 @@ WebView2 下载页：选择 Evergreen Standalone Installer 下的 x64。
 
 来源：[已关闭的 Windows #16](https://github.com/metasequoiaime/msime-windows/issues/16)、[快捷键指南](https://msime.app/docs/?platform=windows#快捷键)。
 
+### Android 外接键盘怎样用方向键选候选？
+
+实体键盘组字时，`↑` / `↓` 默认移动高亮候选，`Page Up` / `Page Down` 翻页，`Home` / `End` 跳到候选列表首尾；候选条前面的数字键 `1`～`9` 仍可直接选词。Android 当前没有单独的方向键开关，接上实体键盘并出现候选条后即可使用；没有组字时方向键仍由编辑器移动光标。
+
 ### 可以用微软双拼，或一直输出英文标点吗？
 
 可以。在“设置 → 输入”选择双拼及微软双拼方案；“固定标点”可选择“始终使用英文标点”。它与“跟随中英文状态”“始终使用中文标点”三者互斥，选择后不会随中英文输入模式自动改变标点状态。
@@ -323,6 +331,16 @@ mail	example@example.com	10
 需要离线输入时，关闭云候选、AI 联想、在线翻译、在线语音识别及润色等联网选项。Windows 指南注明云候选默认开启，会发送正在输入的拼音串；首次安装时可在安装程序的“联网功能”页取消，之后在“设置 → 输入 → 云候选”关闭。反馈网络错误时遮挡 Token、SecretKey 等凭据。
 
 依据：[Windows 指南 · 更新、备份与故障排查](https://msime.app/docs/?platform=windows#更新备份与故障排查)、[云候选](https://msime.app/docs/?platform=windows#云候选)。
+
+### WebDAV 网盘使用私有 CA 或自签名证书时怎么配置？
+
+当前版本没有导入或指定自定义 CA 的入口。WebDAV 地址需要使用系统或运行库信任的公开证书；私有 CA、自签名证书或证书链不受信任时，测试连接会失败。请改用公开证书，或在网关上提供一条由公开 CA 签发的地址。
+
+### 怎么制作自己的按键音效包？
+
+复制[音效包模板](https://github.com/metasequoiaime/msime/blob/develop/docs/plugin-template/README.md)，修改 `plugin.toml` 的名称、作者和版本，再替换其中的 WAV 文件。`keys` 模式可分别设置普通键、空格、回车、退格和上屏音；`sequence` 模式用一个 WAV 和半音序列组成按键旋律。样本必须是 WAV，单个不超过 1.5 秒；完整限制和字段见[插件格式说明](https://github.com/metasequoiaime/msime/blob/develop/docs/plugins.md#音效包-kind--sound)。
+
+桌面开发环境可运行 `msime-pack validate <音效包目录>` 检查，输出 `ok` 后在设置的「插件」页导入文件夹或 `.zip`。Android 和 iOS 只能导入 `.zip`。
 
 ### 换电脑或多设备时，词库和设置能同步吗？
 
