@@ -3,7 +3,7 @@
   "files": {
     "windows.md": {
       "source": "guides/windows.md",
-      "sourceSha256": "850d7642dcbd0d11973a57f0c7443c47abe83b73886699e6dc5cd0b04df2cc91",
+      "sourceSha256": "a1927b5918dd421e6e0b28176bcf3d64cca9cc48653f2d44acb5a8bcab9da0a8",
       "translation": "guides/zh-TW/windows.md"
     },
     "macos.md": {
@@ -23,7 +23,7 @@
     },
     "android.md": {
       "source": "guides/android.md",
-      "sourceSha256": "1e640786370deadda748273d0b9c7fb1c726f887b3a9fdb9ef9b0dc8dfe32e62",
+      "sourceSha256": "c90bbc13ea4126541d0af48864071a9b3c026a34c39e7ec7e6beaafa9c603518",
       "translation": "guides/zh-TW/android.md"
     },
     "ios.md": {
@@ -38,7 +38,7 @@
     },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "9ae62f3d32f6f47cb2b2bbf620bf5c3e4604a78f9562ac9e2c91252b311df59f",
+      "sourceSha256": "f828d79915b99767ebf2fc14e348c961601800d5644022b8358e9bae0ce2ff93",
       "translation": "guides/zh-TW/faq.md"
     }
   },

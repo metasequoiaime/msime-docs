@@ -113,6 +113,10 @@ TestFlight 連結提示“不接受新測試員”時，請稍後再試，或到
 
 依據：iOS v0.51.5 的 App 引導、說明頁與 [iOS 宿主說明](https://github.com/metasequoiaime/msime/blob/develop/platforms/ios/README.md)。
 
+### iOS 的剪貼簿和常用語會自動分詞嗎？
+
+不會。剪貼簿記錄和常用語按原文插入，換行也會保留；它們不經過拼音引擎，不會拆成候選字詞或逐詞轉換。需要分詞或重新組句時，請把文字貼上到輸入框後自行編輯。
+
 ### iPad 上切換到水杉後，馬上又跳回原來的鍵盤？
 
 這是 iPadOS 27 上的已知問題，還在排查（[#6685](https://github.com/metasequoiaime/msime/issues/6685)）。從診斷日誌看，鍵盤延伸功能剛載入就被系統結束，系統隨即退回上一個鍵盤，並不是沒裝好或設定不對。v0.51.5 之後的下一個 iOS 版本會在診斷日誌裡加上記憶體讀數，發布後請重現一次，在 App 裡開啟診斷日誌並把記錄貼到這個 issue 裡；如果「設定 → 隱私權與安全性 → 分析與改進 → 分析資料」裡有名稱以 `JetsamEvent` 或 `MSIMEKeyboardExtension` 開頭、時間對得上的項目，也請一起附上，同時寫明 iPad 型號、是否開著幕前調度和使用的輸入方案。
@@ -240,6 +244,10 @@ WebView2 下載頁：選擇 Evergreen Standalone Installer 下的 x64。
 
 來源：[已關閉的 Windows #16](https://github.com/metasequoiaime/msime-windows/issues/16)、[快捷鍵指南](https://msime.app/zh-TW/docs/windows/#快捷鍵)。
 
+### Android 外接鍵盤怎樣用方向鍵選候選字？
+
+實體鍵盤組字時，`↑` / `↓` 預設移動反白候選，`Page Up` / `Page Down` 翻頁，`Home` / `End` 跳到候選列表首尾；候選條前面的數字鍵 `1`～`9` 仍可直接選詞。Android 目前沒有單獨的方向鍵開關，接上實體鍵盤並出現候選條後即可使用；沒有組字時方向鍵仍由編輯器移動游標。
+
 ### 可以用微軟雙拼，或一直輸出英文標點嗎？
 
 可以。在“设置 → 输入”選擇雙拼及微軟雙拼方案；“固定标点”可選擇“始终使用英文标点”。它與“跟随中英文状态”“始终使用中文标点”三者互斥，選擇後不會隨中英文輸入模式自動改變標點狀態。
@@ -325,6 +333,16 @@ mail	example@example.com	10
 需要離線輸入時，關閉雲端候選字、AI 聯想、線上翻譯、線上語音辨識及潤色等聯網選項。Windows 指南註明雲端候選字預設開啟，會傳送正在輸入的拼音串；首次安裝時可在安裝程式的“联网功能”頁取消，之後在“设置 → 输入 → 云候选”關閉。回報網路錯誤時遮擋 Token、SecretKey 等憑證。
 
 依據：[Windows 指南 · 更新、備份與故障排查](https://msime.app/zh-TW/docs/windows/#更新備份與故障排查)、[雲端候選字](https://msime.app/zh-TW/docs/windows/#雲端候選字)。
+
+### WebDAV 網盤使用私有 CA 或自簽憑證時怎麼設定？
+
+目前版本沒有匯入或指定自訂 CA 的入口。WebDAV 地址需要使用系統或執行庫信任的公開憑證；私有 CA、自簽憑證或憑證鏈不受信任時，測試連線會失敗。請改用公開憑證，或在閘道上提供一條由公開 CA 簽發的地址。
+
+### 怎麼製作自己的按鍵音效包？
+
+複製[音效包模板](https://github.com/metasequoiaime/msime/blob/develop/docs/plugin-template/README.md)，修改 `plugin.toml` 的名稱、作者和版本，再替換其中的 WAV 檔案。`keys` 模式可分別設定普通鍵、空格、Enter、退格和上屏音；`sequence` 模式用一個 WAV 和半音序列組成按鍵旋律。樣本必須是 WAV，單個不超過 1.5 秒；完整限制和欄位見[外掛格式說明](https://github.com/metasequoiaime/msime/blob/develop/docs/plugins.md#音效包-kind--sound)。
+
+桌面開發環境可執行 `msime-pack validate <音效包目录>` 檢查，輸出 `ok` 後在設定的「插件」頁匯入資料夾或 `.zip`。Android 和 iOS 只能匯入 `.zip`。
 
 ### 換電腦或多裝置時，詞庫和設定能同步嗎？
 
